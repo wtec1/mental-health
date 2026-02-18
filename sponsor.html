@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sponsor a Program — Let's Talk Mental Health Malawi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+<style>
+body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
+
+.label {
+  font-family:'Bebas Neue',cursive;
+  letter-spacing:0.18em;
+  font-size:0.85rem;
+  color:#E8940A;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section style="position:relative; padding:170px 0 110px; overflow:hidden;">
+
+  <div style="
+      position:absolute;
+      inset:0;
+      background-image:url('assets/team.jpeg');
+      background-size:cover;
+      background-position:center;">
+  </div>
+
+  <div style="position:absolute; inset:0; background:rgba(15,15,15,0.82);"></div>
+
+  <div style="max-width:1000px; margin:0 auto; padding:0 28px; position:relative; z-index:2;">
+
+    <div class="label mb-6">Institutional Partnership</div>
+
+    <h1 style="
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.5rem,5vw,4.2rem);
+      font-weight:900;
+      color:#FAF6EF;">
+      Sponsor a <span style="color:#E8940A;">Program</span>
+    </h1>
+
+    <div style="width:70px; height:3px; background:#E8940A; margin:30px 0;"></div>
+
+    <p style="max-width:700px; color:rgba(250,246,239,0.85); font-size:1.1rem; line-height:1.9;">
+      Partner with us to expand structured youth mental health education across Malawi. 
+      Institutional sponsorship enables sustainable impact at scale.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- WHY PARTNER -->
+<!-- ===================================================== -->
+
+<section style="padding:110px 0;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
+
+    <div class="label mb-4">Why Partner With Us</div>
+
+    <div class="grid md:grid-cols-3 gap-60">
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:16px;">
+          Structured Programs
+        </h3>
+        <p style="color:#5E584E; line-height:1.9;">
+          Evidence-based workshops delivered to schools, institutions, and communities.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:16px;">
+          National Impact
+        </h3>
+        <p style="color:#5E584E; line-height:1.9;">
+          Support scalable programs that strengthen youth mental wellbeing nationwide.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:16px;">
+          Responsible Stewardship
+        </h3>
+        <p style="color:#5E584E; line-height:1.9;">
+          Transparent allocation of resources toward training, outreach, and materials.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===================================================== -->
+<!-- SPONSORSHIP FORM -->
+<!-- ===================================================== -->
+
+<section style="padding:120px 0; background:#0F0F0F;">
+  <div style="max-width:850px; margin:0 auto; padding:0 28px;">
+
+    <div class="label mb-6">Institutional Sponsorship Inquiry</div>
+
+    <form action="send.php" method="POST" class="space-y-6">
+
+      <!-- Hidden Identifier -->
+      <input type="hidden" name="form_type" value="institutional_sponsorship">
+
+      <!-- Organization Name -->
+      <div>
+        <label for="organization"
+               style="color:#FAF6EF; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;">
+          Organization Name
+        </label>
+        <input type="text"
+               id="organization"
+               name="organization"
+               required
+               class="w-full bg-[#1A1A1A] border border-white/10 text-white px-4 py-3 text-sm focus:border-[#E8940A] outline-none transition-colors">
+      </div>
+
+      <!-- Type of Support -->
+      <div>
+        <label for="support_type"
+               style="color:#FAF6EF; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;">
+          Type of Support
+        </label>
+        <select id="support_type"
+                name="support_type"
+                required
+                class="w-full bg-[#1A1A1A] border border-white/10 text-white px-4 py-3 text-sm focus:border-[#E8940A] outline-none transition-colors">
+          <option value="">Select Option</option>
+          <option value="sponsor_school_workshop">Sponsor a School Workshop</option>
+          <option value="fund_outreach_campaign">Fund Community Outreach</option>
+          <option value="provide_training_resources">Provide Training Resources</option>
+          <option value="long_term_partnership">Long-Term Partnership</option>
+        </select>
+      </div>
+
+      <!-- Contact Person -->
+      <div>
+        <label for="contact_person"
+               style="color:#FAF6EF; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;">
+          Contact Person
+        </label>
+        <input type="text"
+               id="contact_person"
+               name="contact_person"
+               required
+               class="w-full bg-[#1A1A1A] border border-white/10 text-white px-4 py-3 text-sm focus:border-[#E8940A] outline-none transition-colors">
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email"
+               style="color:#FAF6EF; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;">
+          Email Address
+        </label>
+        <input type="email"
+               id="email"
+               name="email"
+               required
+               class="w-full bg-[#1A1A1A] border border-white/10 text-white px-4 py-3 text-sm focus:border-[#E8940A] outline-none transition-colors">
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message"
+               style="color:#FAF6EF; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;">
+          Additional Information
+        </label>
+        <textarea id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full bg-[#1A1A1A] border border-white/10 text-white px-4 py-3 text-sm focus:border-[#E8940A] outline-none resize-none transition-colors"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+              class="w-full bg-[#E8940A] text-black font-bold text-sm uppercase tracking-wider py-4 transition-all duration-300 hover:bg-[#F5A623] hover:-translate-y-[2px]">
+        Submit Sponsorship Inquiry
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+</body>
+</html>
