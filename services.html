@@ -34,134 +34,290 @@ tailwind.config = {
 </script>
 
 <style>
-body{font-family:'DM Sans',sans-serif;background:#FAF6EF;color:#0F0F0F;}
-.label{font-family:'Bebas Neue',cursive;letter-spacing:.18em;font-size:.8rem;color:#E8940A;}
-.nav-link{text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;}
-.reveal{opacity:0;transform:translateY(30px);transition:.8s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.service-card{transition:.4s ease;}
-.service-card:hover{transform:translateY(-8px);}
-</style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #FAF6EF; color: #0F0F0F; overflow-x: hidden; }
+
+    /* NAV — identical to home */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: all 0.4s ease; background: rgba(15,15,15,0.92); backdrop-filter: blur(12px); }
+    #navbar.scrolled { box-shadow: 0 2px 30px rgba(0,0,0,0.4); }
+    .nav-link { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,246,239,0.85); transition: color 0.3s; position: relative; padding-bottom: 2px; text-decoration: none; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #E8940A; transition: width 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: #E8940A; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .dropdown-parent { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: #0F0F0F; border-top: 2px solid #E8940A; z-index: 200; box-shadow: 0 20px 40px rgba(0,0,0,0.5); padding-top: 14px; }
+    .dropdown-parent::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 14px; }
+    .dropdown-parent:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 11px 20px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,246,239,0.65); border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; text-decoration: none; }
+    .dropdown-menu a:hover { background: #E8940A; color: #0F0F0F; padding-left: 28px; }
+
+    /* BUTTONS */
+    .btn-primary { display: inline-block; background: #E8940A; color: #0F0F0F; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 34px; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease; text-decoration: none; }
+    .btn-primary:hover { background: #F5A623; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,148,10,0.45); }
+    .btn-outline-dark { display: inline-block; border: 1.5px solid rgba(15,15,15,0.3); color: #0F0F0F; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 34px; transition: all 0.3s ease; text-decoration: none; }
+    .btn-outline-dark:hover { background: #0F0F0F; color: #E8940A; }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; background: #0F0F0F; padding: 160px 0 80px; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,148,10,0.12) 0%, transparent 70%); pointer-events: none; }
+    .page-hero-img { position: absolute; inset: 0; z-index: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: 0.15; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MISC */
+    .label { font-family: 'Bebas Neue', cursive; font-size: 0.82rem; letter-spacing: 0.18em; color: #E8940A; }
+    .big-num { font-family: 'Bebas Neue', cursive; color: #E8940A; line-height: 1; }
+
+    /* TEAM CARD */
+    .team-card { transition: all 0.35s ease; position: relative; overflow: hidden; }
+    .team-card:hover { transform: translateY(-6px); }
+    .team-card:hover .team-overlay { opacity: 1; }
+    .team-overlay { position: absolute; inset: 0; background: rgba(232,148,10,0.88); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.35s ease; }
+
+    /* WHY EXIST ITEM */
+    .why-item { border-left: 3px solid transparent; padding-left: 20px; transition: border-color 0.3s; }
+    .why-item:hover { border-color: #E8940A; }
+
+    @keyframes riseUp { from { opacity:0; transform:translateY(36px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(1.4); } }
+  </style>
 </head>
 <body>
 
 <!-- ================= NAVIGATION ================= -->
-<nav class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur z-50">
-  <div class="max-w-7xl mx-auto px-7 py-5 flex justify-between items-center">
+
+
+
+<nav id="navbar">
+  <div style="
+      width:100%;
+      padding:20px 40px;
+      display:flex;
+      align-items:center;
+  ">
 
     <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-orange rounded-full flex items-center justify-center">
-        <span class="font-bebas text-[0.55rem] text-black leading-none text-center">
+    <a href="index.html" style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+        text-decoration:none;
+        flex-shrink:0;
+    ">
+      <div style="width:42px; height:42px; background:#E8940A; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.3s;"
+           onmouseover="this.style.transform='scale(1.08)'"
+           onmouseout="this.style.transform='scale(1)'">
+        <span style="font-family:'Bebas Neue',cursive; font-size:0.58rem; color:#0F0F0F; letter-spacing:0.04em; line-height:1.15; text-align:center;">
           LETS<br>TALK
         </span>
       </div>
+
       <div>
-        <div class="font-bebas text-sm tracking-widest text-cream">LET'S TALK</div>
-        <div class="text-[0.55rem] tracking-[0.25em] uppercase text-orange">
+        <div style="font-family:'Bebas Neue',cursive; font-size:1.05rem; letter-spacing:0.1em; color:#FAF6EF; line-height:1;">
+          LET'S TALK
+        </div>
+        <div style="font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8940A; line-height:1.3;">
           Mental Health Malawi
         </div>
       </div>
     </a>
 
-    <!-- Desktop Menu -->
-    <div class="hidden lg:flex items-center gap-8 text-cream text-[0.75rem] uppercase tracking-wider">
+    <!-- Menu -->
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:28px;
+        margin-left:auto;   /* KEY FIX */
+    ">
+      <!-- menu links -->
+       
+      <!-- Desktop Nav -->
+    <div class="hidden lg:flex" style="align-items:center; gap:32px;">
+      <a href="index.html" class="nav-link">Home</a>
 
-      <a href="index.html" class="hover:text-orange transition">Home</a>
-
-      <!-- ABOUT -->
-      <div class="relative group">
-        <a href="about.html" class="hover:text-orange flex items-center gap-1 transition">
-          About
-          <svg width="10" height="10" fill="none" stroke="currentColor"
-               stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
-          <a href="about.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">About Us</a>
-          <a href="goals.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Goals</a>
-          <a href="values.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Values</a>
+      <div class="dropdown-parent">
+        <a href="about.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">About <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="goals.html">Our Goals</a>
+          <a href="values.html">Our Values</a>
         </div>
       </div>
 
-      <!-- SERVICES -->
-      <div class="relative group">
-        <a href="services.html" class="text-orange flex items-center gap-1">
-          Services
-          <svg width="10" height="10" fill="none" stroke="currentColor"
-               stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
-          <a href="services.html" class="block px-4 py-2 text-orange">All Services</a>
-          <a href="book-training.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Book Training</a>
+      <div class="dropdown-parent">
+        <a href="services.html" class="nav-link active" style="display:flex; align-items:center; gap:4px;">Services <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="services.html">All Services</a>
+          <a href="book-training.html">Book Training</a>
         </div>
       </div>
 
-      <!-- IMPACT -->
-      <div class="relative group">
-        <a href="impact.html" class="hover:text-orange flex items-center gap-1 transition">
-          Impact
-          <svg width="10" height="10" fill="none" stroke="currentColor"
-               stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
-           <a href="impact.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Impact</a>
-          <a href="programs.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Programs & Activities</a>
-          <a href="gallery.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Gallery</a>
-          <a href="future-plans.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Future Plans</a>
+      <div class="dropdown-parent">
+        <a href="impact.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Impact <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+            <a href="impact.html">Impact</a>
+          <a href="programs.html">Programs & Activities</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="future-plans.html">Future Plans</a>
         </div>
       </div>
 
-      <!-- RESOURCES -->
-      <div class="relative group">
-        <a href="resources.html" class="hover:text-orange flex items-center gap-1 transition">
-          Resources
-          <svg width="10" height="10" fill="none" stroke="currentColor"
-               stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[250px]">
-          <a href="resources.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Mental Health Education</a>
-          <a href="get-support.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Get Support</a>
+      <div class="dropdown-parent">
+        <a href="resources.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Resources <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="resources.html">Mental Health Education</a>
+          <a href="get-support.html">Get Support</a>
         </div>
       </div>
 
-      <!-- PARTNERS -->
-      <div class="relative group">
-        <a href="partners.html" class="hover:text-orange flex items-center gap-1 transition">
-          Partners
-          <svg width="10" height="10" fill="none" stroke="currentColor"
-               stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
-        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
-          <a href="partners.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Partners</a>
-          <a href="partners.html#become" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Become a Partner</a>
-          <a href="donate.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Support Our Mission</a>
+      <div class="dropdown-parent">
+        <a href="partners.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Partners <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="partners.html">Our Partners</a>
+          <a href="partners.html#become">Become a Partner</a>
+          <a href="donate.html">Support Our Mission</a>
         </div>
       </div>
 
-      <a href="contact.html" class="hover:text-orange transition">Contact</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+<!-- sponsor -->
 
+<a href="sponsor.html"
+   class="hidden lg:inline-block"
+   style="
+     background:transparent;
+     color:#FAF6EF;
+     padding:11px 24px;
+     font-size:0.72rem;
+     font-weight:700;
+     letter-spacing:0.1em;
+     text-transform:uppercase;
+     border:1.5px solid #FAF6EF;
+     text-decoration:none;
+     transition:all 0.3s ease;
+   "
+   onmouseover="this.style.background='#FAF6EF'; this.style.color='#0F0F0F';"
+   onmouseout="this.style.background='transparent'; this.style.color='#FAF6EF';">
+   Sponsor
+</a>
+
+    <a href="get-support.html" class="btn-primary hidden lg:inline-block" style="padding:11px 24px; font-size:0.72rem;">Get Support</a>
+
+    <button id="mob-toggle"
+  class="lg:hidden flex flex-col gap-2 p-2 bg-transparent border-0 cursor-pointer">
+  
+  <span class="w-8 h-[3px] bg-cream rounded"></span>
+  <span class="w-8 h-[3px] bg-cream rounded"></span>
+  <span class="w-8 h-[3px] bg-cream rounded"></span>
+</button>
+
+
+  </div>
+   </div>
+  
+  
+
+  <!-- Mobile Menu -->
+<div id="mob-menu"
+     style="background:#0F0F0F; border-top:1px solid rgba(232,148,10,0.2); padding:24px 28px 32px; display:none;">
+
+  <div style="display:flex; flex-direction:column; gap:18px;">
+
+    <!-- Home -->
+    <a href="index.html" class="nav-link">Home</a>
+
+    <!-- ABOUT -->
+    <div>
+      <button class="mob-dropdown-toggle nav-link"
+              style="width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer;">
+        About
+        <span class="mob-arrow" style="transition:transform 0.3s;">+</span>
+      </button>
+      <div class="mob-submenu" style="display:none; padding-left:14px; margin-top:10px; flex-direction:column; gap:10px;">
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="goals.html" class="nav-link">Our Goals</a>
+        <a href="values.html" class="nav-link">Our Values</a>
+      </div>
     </div>
 
-    <!-- CTA -->
-    <a href="get-support.html"
-       class="hidden lg:inline-block bg-orange text-black px-6 py-3 text-xs font-bold uppercase tracking-wider hover:scale-105 transition">
+    <!-- SERVICES -->
+    <div>
+      <button class="mob-dropdown-toggle nav-link"
+              style="width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer;">
+        Services
+        <span class="mob-arrow" style="transition:transform 0.3s;">+</span>
+      </button>
+      <div class="mob-submenu" style="display:none; padding-left:14px; margin-top:10px; flex-direction:column; gap:10px;">
+        <a href="services.html" class="nav-link">All Services</a>
+        <a href="book-training.html" class="nav-link">Book Training</a>
+      </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div>
+      <button class="mob-dropdown-toggle nav-link"
+              style="width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer;">
+        Impact
+        <span class="mob-arrow" style="transition:transform 0.3s;">+</span>
+      </button>
+      <div class="mob-submenu" style="display:none; padding-left:14px; margin-top:10px; flex-direction:column; gap:10px;">
+        <a href="impact.html" class="nav-link">Impact</a>
+        <a href="programs.html" class="nav-link">Programs & Activities</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="future-plans.html" class="nav-link">Future Plans</a>
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div>
+      <button class="mob-dropdown-toggle nav-link"
+              style="width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer;">
+        Resources
+        <span class="mob-arrow" style="transition:transform 0.3s;">+</span>
+      </button>
+      <div class="mob-submenu" style="display:none; padding-left:14px; margin-top:10px; flex-direction:column; gap:10px;">
+        <a href="resources.html" class="nav-link">Mental Health Education</a>
+        <a href="get-support.html" class="nav-link">Get Support</a>
+      </div>
+    </div>
+
+    <!-- PARTNERS -->
+    <div>
+      <button class="mob-dropdown-toggle nav-link"
+              style="width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer;">
+        Partners
+        <span class="mob-arrow" style="transition:transform 0.3s;">+</span>
+      </button>
+      <div class="mob-submenu" style="display:none; padding-left:14px; margin-top:10px; flex-direction:column; gap:10px;">
+        <a href="partners.html" class="nav-link">Our Partners</a>
+        <a href="partners.html#become" class="nav-link">Become a Partner</a>
+        <a href="donate.html" class="nav-link">Support Our Mission</a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <a href="contact.html" class="nav-link">Contact</a>
+
+    <!-- Sponsor -->
+    <a href="sponsor.html"
+       style="margin-top:10px; border:1.5px solid #FAF6EF; color:#FAF6EF; text-align:center; padding:12px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none;">
+       Sponsor
+    </a>
+
+    <!-- Get Support -->
+    <a href="get-support.html" class="btn-primary" style="text-align:center; margin-top:6px;">
       Get Support
     </a>
 
-    <!-- Mobile Toggle -->
-    <button id="menuBtn" class="lg:hidden text-cream text-2xl">☰</button>
-
   </div>
+</div>
+
 </nav>
 
 <!-- ================= HERO ================= -->
@@ -305,18 +461,62 @@ Contact Us
 </section>
 
 
-<script>
-const btn=document.getElementById('menuBtn');
-const menu=document.getElementById('mobileMenu');
-btn.addEventListener('click',()=>{menu.classList.toggle('hidden');});
 
-const reveal=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add('visible');}
-});
-},{threshold:.15});
-reveal.forEach(el=>observer.observe(el));
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        obs.unobserve(e.target); 
+      } 
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => 
+    nav.classList.toggle('scrolled', window.scrollY > 50)
+  );
+
+  // Mobile menu toggle
+  const mobMenu = document.getElementById('mob-menu');
+
+  document.getElementById('mob-toggle').addEventListener('click', () => {
+    mobMenu.style.display = (mobMenu.style.display === 'block') ? 'none' : 'block';
+  });
+
+  /* ✅ THE FIX */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      mobMenu.style.display = 'none';
+    }
+  });
+</script>
+
+
+<script>
+  document.querySelectorAll('.mob-dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function () {
+
+      const submenu = this.nextElementSibling;
+      const arrow = this.querySelector('.mob-arrow');
+
+      const isOpen = submenu.style.display === 'flex';
+      
+
+      // Close all
+      document.querySelectorAll('.mob-submenu').forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.mob-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+
+      if (!isOpen) {
+        submenu.style.display = 'flex';
+        arrow.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
 </script>
 
 </body>
