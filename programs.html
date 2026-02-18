@@ -140,7 +140,7 @@
        
       <!-- Desktop Nav -->
     <div class="hidden lg:flex" style="align-items:center; gap:32px;">
-      <a href="index.html" class="nav-link active">Home</a>
+      <a href="index.html" class="nav-link ">Home</a>
 
       <div class="dropdown-parent">
         <a href="about.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">About <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
@@ -163,7 +163,7 @@
         <a href="impact.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Impact <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
         <div class="dropdown-menu">
             <a href="impact.html">Impact</a>
-          <a href="programs.html">Programs & Activities</a>
+          <a href="programs.html" class="nav-link active">Programs & Activities</a>
           <a href="gallery.html">Gallery</a>
           <a href="future-plans.html">Future Plans</a>
         </div>
@@ -443,23 +443,60 @@
 
 
 <script>
-  // Mobile Toggle
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        obs.unobserve(e.target); 
+      } 
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => 
+    nav.classList.toggle('scrolled', window.scrollY > 50)
+  );
+
+  // Mobile menu toggle
+  const mobMenu = document.getElementById('mob-menu');
+
+  document.getElementById('mob-toggle').addEventListener('click', () => {
+    mobMenu.style.display = (mobMenu.style.display === 'block') ? 'none' : 'block';
   });
 
-  // Reveal animation
-  const reveal = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
+  /* ✅ THE FIX */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      mobMenu.style.display = 'none';
+    }
+  });
+</script>
+
+
+<script>
+  document.querySelectorAll('.mob-dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function () {
+
+      const submenu = this.nextElementSibling;
+      const arrow = this.querySelector('.mob-arrow');
+
+      const isOpen = submenu.style.display === 'flex';
+      
+
+      // Close all
+      document.querySelectorAll('.mob-submenu').forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.mob-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+
+      if (!isOpen) {
+        submenu.style.display = 'flex';
+        arrow.style.transform = 'rotate(45deg)';
       }
     });
-  },{threshold:.15});
-  reveal.forEach(el=>observer.observe(el));
+  });
 </script>
 
 </body>
