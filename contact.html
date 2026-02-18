@@ -1,0 +1,530 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Talk Mental Health Malawi</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#E8940A',
+              orangeLight: '#F5A623',
+              orangeDark: '#C47A08',
+              black: '#0F0F0F',
+              cream: '#FAF6EF',
+              creamDark: '#F0E8D8',
+              charcoal: '#1A1A1A',
+              muted: '#6B6457',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            bebas: ['"Bebas Neue"', 'cursive'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease forwards',
+            'fade-in': 'fadeIn 1s ease forwards',
+            'slide-right': 'slideRight 0.7s ease forwards',
+            'ticker': 'ticker 30s linear infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideRight: {
+              '0%': { opacity: '0', transform: 'translateX(-30px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            ticker: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background-color: #FAF6EF; color: #0F0F0F; overflow-x: hidden; }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #FAF6EF;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #E8940A;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #E8940A; }
+
+    .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: #0F0F0F; border-top: 2px solid #E8940A; z-index: 100; }
+    .dropdown-wrapper:hover .dropdown { display: block; }
+    .dropdown a { display: block; padding: 10px 18px; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: #FAF6EF; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .dropdown a:hover { background: #E8940A; color: #0F0F0F; padding-left: 24px; }
+
+    .hero-bg {
+      background: #0F0F0F;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232,148,10,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232,148,10,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .stat-card {
+      border-left: 3px solid #E8940A;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .service-card {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #E8940A;
+      transition: width 0.4s ease;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+
+    .value-pill {
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .value-pill:hover {
+      background: #E8940A;
+      color: #0F0F0F;
+      transform: scale(1.05);
+    }
+
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker-content { display: inline-block; animation: ticker 30s linear infinite; }
+
+    .section-label {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 0.15em;
+      color: #E8940A;
+      font-size: 0.85rem;
+    }
+
+    .big-number {
+      font-family: 'Bebas Neue', cursive;
+      color: #E8940A;
+      line-height: 1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cta-primary {
+      background: #E8940A;
+      color: #0F0F0F;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+    .cta-primary:hover {
+      background: #F5A623;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(232,148,10,0.4);
+    }
+
+    .cta-outline {
+      border: 2px solid #E8940A;
+      color: #E8940A;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .cta-outline:hover {
+      background: #E8940A;
+      color: #0F0F0F;
+      transform: translateY(-2px);
+    }
+
+    .impact-number { font-family: 'Bebas Neue', cursive; line-height: 1; }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      color: #E8940A;
+      opacity: 0.15;
+      line-height: 0.7;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-scrolled {
+      background: rgba(15,15,15,0.97) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(15,15,15,0.85); backdrop-filter: blur(8px);">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+        <span style="font-family:'Bebas Neue',cursive; font-size:0.7rem; color:#0F0F0F; letter-spacing:0.05em; line-height:1; text-align:center; padding:2px;">LETS<br>TALK</span>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',cursive; font-size:1rem; letter-spacing:0.1em; color:#FAF6EF; line-height:1;">LET'S TALK</div>
+        <div style="font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:#E8940A; line-height:1.2;">Mental Health Malawi</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="/" class="nav-link">Home</a>
+
+      <div class="dropdown-wrapper relative">
+        <a href="#about" class="nav-link flex items-center gap-1">About
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#about">About Us</a>
+          <a href="#goals">Our Goals</a>
+          <a href="#values">Our Values</a>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper relative">
+        <a href="#services" class="nav-link flex items-center gap-1">Services
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#services">All Services</a>
+          <a href="#book">Book Training</a>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper relative">
+        <a href="#impact" class="nav-link flex items-center gap-1">Impact
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#impact">Programs & Activities</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#future">Future Plans</a>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper relative">
+        <a href="#resources" class="nav-link flex items-center gap-1">Resources
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#resources">Mental Health Education</a>
+          <a href="#support">Get Support</a>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper relative">
+        <a href="#partners" class="nav-link flex items-center gap-1">Partners
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#partners">Our Partners</a>
+          <a href="#sponsor">Become a Partner</a>
+          <a href="#sponsor">Support Our Mission</a>
+        </div>
+      </div>
+
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="hidden lg:block">
+      <a href="#support" class="cta-primary text-xs">Get Support</a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button id="mobileToggle" class="lg:hidden flex flex-col gap-1.5 p-2">
+      <span class="w-6 h-0.5 bg-brand-cream block transition-all"></span>
+      <span class="w-4 h-0.5 bg-brand-orange block transition-all"></span>
+      <span class="w-6 h-0.5 bg-brand-cream block transition-all"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-brand-black border-t border-brand-orange/20 px-6 py-6 space-y-4">
+    <a href="#" class="block nav-link py-2">Home</a>
+    <a href="#about" class="block nav-link py-2">About Us</a>
+    <a href="#services" class="block nav-link py-2">Services</a>
+    <a href="#impact" class="block nav-link py-2">Impact</a>
+    <a href="#partners" class="block nav-link py-2">Partners</a>
+    <a href="#contact" class="block nav-link py-2">Contact</a>
+    <a href="#support" class="cta-primary mt-4 text-center block">Get Support</a>
+  </div>
+</nav>
+
+
+
+
+<!-- ============================================================
+     PARTNERS
+============================================================ -->
+<section id="partners" class="py-20" style="background: #0F0F0F;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="section-label mb-3">Our Contacts</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:white;">Let's Get in Touch</h2>
+    </div>
+
+   
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT / FOOTER CTA
+============================================================ -->
+<section id="contact" class="py-24" style="background:#0F0F0F;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16">
+
+      <!-- Left -->
+      <div class="reveal">
+        <div class="section-label mb-4">Get in Touch</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-weight:900; color:#FAF6EF; line-height:1.2; margin-bottom:32px;">
+          We'd Love to<br />
+          <em style="color:#E8940A;">Hear From You</em>
+        </h2>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div style="width:36px; height:36px; background:#E8940A; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+              <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">Address</div>
+              <p style="font-size:0.9rem; color:rgba(250,246,239,0.7); margin-top:4px;">Andrew's Building, Malangalanga, Lilongwe, Malawi</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div style="width:36px; height:36px; background:#E8940A; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+              <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">Phone</div>
+              <p style="font-size:0.9rem; color:rgba(250,246,239,0.7); margin-top:4px;">+265 883 529 443</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div style="width:36px; height:36px; background:#E8940A; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+              <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">Email</div>
+              <a href="mailto:letstalkmentalhealthmw@gmail.com" style="font-size:0.9rem; color:rgba(250,246,239,0.7); margin-top:4px; display:block; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.7)'">letstalkmentalhealthmw@gmail.com</a>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div class="flex items-center gap-4 pt-4">
+            <a href="#" style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; border:1px solid rgba(232,148,10,0.3); padding:8px 16px; transition:all 0.3s;" onmouseover="this.style.background='#E8940A'; this.style.color='#0F0F0F'" onmouseout="this.style.background='transparent'; this.style.color='#E8940A'">Facebook</a>
+            <a href="#" style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; border:1px solid rgba(232,148,10,0.3); padding:8px 16px; transition:all 0.3s;" onmouseover="this.style.background='#E8940A'; this.style.color='#0F0F0F'" onmouseout="this.style.background='transparent'; this.style.color='#E8940A'">Instagram</a>
+            <a href="#" style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; border:1px solid rgba(232,148,10,0.3); padding:8px 16px; transition:all 0.3s;" onmouseover="this.style.background='#E8940A'; this.style.color='#0F0F0F'" onmouseout="this.style.background='transparent'; this.style.color='#E8940A'">TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div style="background:#1A1A1A; padding:40px;">
+          <div class="section-label mb-6">Send a Message</div>
+
+          <div class="space-y-4">
+            <div>
+              <label style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,246,239,0.4); display:block; margin-bottom:8px;">Full Name</label>
+              <input type="text" placeholder="Your name" style="width:100%; background:#0F0F0F; border:1px solid rgba(250,246,239,0.1); color:#FAF6EF; padding:12px 16px; font-size:0.9rem; outline:none; font-family:'DM Sans',sans-serif; transition:border-color 0.3s;" onfocus="this.style.borderColor='#E8940A'" onblur="this.style.borderColor='rgba(250,246,239,0.1)'" />
+            </div>
+            <div>
+              <label style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,246,239,0.4); display:block; margin-bottom:8px;">Email Address</label>
+              <input type="email" placeholder="your@email.com" style="width:100%; background:#0F0F0F; border:1px solid rgba(250,246,239,0.1); color:#FAF6EF; padding:12px 16px; font-size:0.9rem; outline:none; font-family:'DM Sans',sans-serif; transition:border-color 0.3s;" onfocus="this.style.borderColor='#E8940A'" onblur="this.style.borderColor='rgba(250,246,239,0.1)'" />
+            </div>
+            <div>
+              <label style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,246,239,0.4); display:block; margin-bottom:8px;">Message</label>
+              <textarea rows="5" placeholder="Tell us how we can help..." style="width:100%; background:#0F0F0F; border:1px solid rgba(250,246,239,0.1); color:#FAF6EF; padding:12px 16px; font-size:0.9rem; outline:none; resize:none; font-family:'DM Sans',sans-serif; transition:border-color 0.3s;" onfocus="this.style.borderColor='#E8940A'" onblur="this.style.borderColor='rgba(250,246,239,0.1)'"></textarea>
+            </div>
+            <button style="width:100%; background:#E8940A; color:#0F0F0F; font-weight:700; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; padding:16px; border:none; cursor:pointer; transition:all 0.3s; font-family:'DM Sans',sans-serif;" onmouseover="this.style.background='#F5A623'" onmouseout="this.style.background='#E8940A'">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer style="background:#0A0A0A; border-top:1px solid rgba(232,148,10,0.2); padding:32px 0;">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(250,246,239,0.3);">
+      &copy; 2025 Let's Talk Mental Health Malawi. All rights reserved.
+    </div>
+    <div style="font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(250,246,239,0.3);">
+      Registered Initiative &nbsp;&middot;&nbsp; Lilongwe, Malawi
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:8px; height:8px; background:#E8940A; border-radius:50%; animation: pulse 2s infinite;"></div>
+      <span style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A;">Active &amp; Growing</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+    }
+  });
+
+  // Mobile menu
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
+
+  // Hero animation triggers (CSS handles it via animation-fill-mode: both)
+  // Animate hero stats on page load
+  document.querySelectorAll('[style*="animation"]').forEach(el => {
+    el.style.opacity = '0';
+  });
+</script>
+
+<style>
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+</style>
+
+</body>
+</html>

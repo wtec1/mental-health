@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Goals — Let's Talk Mental Health Malawi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: '#E8940A',
+            black: '#0F0F0F',
+            cream: '#FAF6EF'
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            bebas: ['"Bebas Neue"', 'cursive'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background:#FAF6EF; color:#0F0F0F; }
+    .label { font-family:'Bebas Neue',cursive; letter-spacing:0.18em; font-size:.82rem; color:#E8940A; }
+  .reveal { opacity:1; transform:translateY(30px); transition:.8s ease; }
+.reveal.visible { transform:translateY(0); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (IDENTICAL STRUCTURE — ACTIVE STATE UPDATED) -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur text-cream z-50">
+  <div class="max-w-7xl mx-auto px-7 py-5 flex justify-between items-center">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-orange rounded-full flex items-center justify-center">
+        <span class="font-bebas text-[0.55rem] text-black leading-none text-center">LETS<br>TALK</span>
+      </div>
+      <div>
+        <div class="font-bebas tracking-widest text-sm">LET'S TALK</div>
+        <div class="text-[0.55rem] tracking-[0.25em] uppercase text-orange">Mental Health Malawi</div>
+      </div>
+    </a>
+
+    <div class="hidden lg:flex gap-8 text-xs tracking-wider uppercase">
+
+      <a href="index.html" class="hover:text-orange">Home</a>
+
+      <div class="relative group">
+        <a href="about.html" class="flex items-center gap-1 hover:text-orange">
+          About
+        </a>
+        <div class="absolute top-full left-0 bg-black border-t-2 border-orange hidden group-hover:block min-w-[200px]">
+          <a href="about.html" class="block px-5 py-3 text-cream/70 hover:bg-orange hover:text-black">About Us</a>
+          <a href="goals.html" class="block px-5 py-3 bg-orange text-black">Our Goals</a>
+          <a href="values.html" class="block px-5 py-3 text-cream/70 hover:bg-orange hover:text-black">Our Values</a>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <a href="services.html" class="hover:text-orange">Services</a>
+      </div>
+
+      <div class="relative group">
+        <a href="impact.html" class="hover:text-orange">Impact</a>
+      </div>
+
+      <div class="relative group">
+        <a href="resources.html" class="hover:text-orange">Resources</a>
+      </div>
+
+      <div class="relative group">
+        <a href="partners.html" class="hover:text-orange">Partners</a>
+      </div>
+
+      <a href="contact.html" class="hover:text-orange">Contact</a>
+
+    </div>
+
+    <a href="get-support.html" class="hidden lg:inline-block bg-orange text-black px-6 py-3 text-xs font-bold tracking-wider uppercase">
+      Get Support
+    </a>
+
+
+    
+    <!-- Mobile Toggle -->
+    <button id="menuBtn" class="lg:hidden text-cream">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden bg-black border-t border-orange/30">
+    <div class="flex flex-col px-7 py-6 gap-5 text-cream text-sm uppercase tracking-wider">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="goals.html">Our Goals</a>
+      <a href="values.html" class="text-orange">Our Values</a>
+      <a href="services.html">Services</a>
+      <a href="impact.html">Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="partners.html">Partners</a>
+      <a href="contact.html">Contact</a>
+      <a href="get-support.html" class="bg-orange text-black text-center py-3 font-semibold">Get Support</a>
+    </div>
+  </div>
+  </div>
+
+  
+</nav>
+
+
+<!-- HERO -->
+<section class="pt-40 pb-24 bg-black relative overflow-hidden">
+
+  <div class="absolute inset-0 opacity-15">
+    <!-- Replace with awareness presentation image assets/goals-hero.jpg-->
+    <img src="assets/goals.jpg" class="w-full h-full object-fit:cover" />
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-7">
+
+    <div class="label mb-5">Our Direction</div>
+
+    <h1 class="font-display text-5xl md:text-7xl font-black text-cream leading-tight max-w-3xl">
+      Our <span class="text-orange">Goals</span>
+    </h1>
+
+    <div class="w-16 h-[3px] bg-orange mt-8"></div>
+
+    <p class="text-cream/70 mt-8 max-w-xl text-lg leading-relaxed">
+      Clear, measurable objectives guiding our mission to improve youth mental health across Malawi.
+    </p>
+
+  </div>
+</section>
+
+
+
+<!-- GOALS SECTION -->
+<section class="py-28">
+
+  <div class="max-w-6xl mx-auto px-7">
+
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+      <!-- IMAGE -->
+      <div class="reveal">
+        <!-- Awareness session image -->
+        <img src="assets/Designer.jpeg" class="w-full h-[520px] object-cover" />
+        <div class="h-1 bg-orange"></div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="space-y-12">
+
+        <div class="reveal">
+          <div class="label mb-4">Education</div>
+          <h3 class="font-display text-2xl font-bold mb-4">Provide Mental Health Education in Schools</h3>
+          <p class="text-muted leading-relaxed">
+            Deliver structured, youth-friendly mental health education programs that equip students with knowledge, awareness, and coping skills.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="label mb-4">Access</div>
+          <h3 class="font-display text-2xl font-bold mb-4">Promote Accessible Mental Health Information</h3>
+          <p class="leading-relaxed">
+            Ensure accurate, stigma-free mental health information is available both physically and digitally across communities.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="label mb-4">Awareness</div>
+          <h3 class="font-display text-2xl font-bold mb-4">Conduct Awareness Workshops</h3>
+          <p class="leading-relaxed">
+            Facilitate interactive workshops in schools, workplaces, and communities to address stigma and encourage help-seeking behavior.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="label mb-4">Collaboration</div>
+          <h3 class="font-display text-2xl font-bold mb-4">Collaborate with Professionals</h3>
+          <p class="leading-relaxed">
+            Partner with medical experts, psychologists, institutions, and organizations to strengthen mental health delivery systems.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="label mb-4">Prevention</div>
+          <h3 class="font-display text-2xl font-bold mb-4">Support Suicide Prevention Initiatives</h3>
+          <p class="leading-relaxed">
+            Advocate for early intervention, crisis response training, and community-based prevention strategies targeting youth.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="py-20 bg-orange">
+
+  <div class="max-w-6xl mx-auto px-7 flex flex-wrap items-center justify-between gap-10">
+
+    <div>
+      <h2 class="font-display text-3xl md:text-4xl font-black text-black leading-tight">
+        Turning Vision Into Measurable Impact
+      </h2>
+    </div>
+
+    <div class="flex gap-5">
+      <a href="services.html" class="bg-black text-cream px-8 py-4 text-xs font-bold tracking-wider uppercase">
+        Explore Services
+      </a>
+      <a href="partners.html" class="border-2 border-black px-8 py-4 text-xs font-bold tracking-wider uppercase">
+        Partner With Us
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<script>
+  // Mobile Toggle
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  // Reveal animation
+  const reveal = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+      }
+    });
+  },{threshold:.15});
+  reveal.forEach(el=>observer.observe(el));
+</script>
+
+
+</body>
+</html>

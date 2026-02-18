@@ -1,0 +1,567 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Talk Mental Health Malawi — Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: '#E8940A',
+            orangeHover: '#F5A623',
+            black: '#0F0F0F',
+            cream: '#FAF6EF',
+            creamDark: '#F0E8D8',
+            muted: '#6B6457',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            bebas: ['"Bebas Neue"', 'cursive'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #FAF6EF; color: #0F0F0F; overflow-x: hidden; }
+
+    /* NAV */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: all 0.4s ease; background: transparent; }
+    #navbar.scrolled { background: rgba(15,15,15,0.96); backdrop-filter: blur(12px); box-shadow: 0 2px 30px rgba(0,0,0,0.4); }
+
+    .nav-link { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,246,239,0.85); transition: color 0.3s; position: relative; padding-bottom: 2px; text-decoration: none; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #E8940A; transition: width 0.3s ease; }
+    .nav-link:hover { color: #E8940A; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: #E8940A; }
+    .nav-link.active::after { width: 100%; }
+
+    .dropdown-parent { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: #0F0F0F; border-top: 2px solid #E8940A; z-index: 200; box-shadow: 0 20px 40px rgba(0,0,0,0.5); padding-top: 14px; margin-top: 0; }
+    .dropdown-parent::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 14px; } 
+    .dropdown-parent:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 11px 20px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,246,239,0.65); border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; text-decoration: none; }
+    .dropdown-menu a:hover { background: #E8940A; color: #0F0F0F; padding-left: 28px; }
+
+    /* BUTTONS */
+    .btn-primary { display: inline-block; background: #E8940A; color: #0F0F0F; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 34px; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: all 0.3s ease; text-decoration: none; }
+    .btn-primary:hover { background: #F5A623; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,148,10,0.45); }
+    .btn-outline { display: inline-block; border: 1.5px solid rgba(250,246,239,0.45); color: rgba(250,246,239,0.8); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 34px; transition: all 0.3s ease; text-decoration: none; }
+    .btn-outline:hover { border-color: #E8940A; color: #E8940A; }
+    .btn-dark { display: inline-block; background: #0F0F0F; color: #FAF6EF; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 34px; transition: all 0.3s ease; text-decoration: none; }
+    .btn-dark:hover { background: #1A1A1A; transform: translateY(-2px); }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .hero-img { position: absolute; inset: 0; z-index: 0; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(105deg, rgba(15,15,15,0.90) 0%, rgba(15,15,15,0.78) 55%, rgba(15,15,15,0.50) 100%); }
+    .hero-grain { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.25; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"); }
+    .hero-content { position: relative; z-index: 3; }
+
+    /* TICKER */
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker-track { display: inline-block; animation: ticker 28s linear infinite; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MISC */
+    .label { font-family: 'Bebas Neue', cursive; font-size: 0.82rem; letter-spacing: 0.18em; color: #E8940A; }
+    .stat-bar { border-left: 3px solid #E8940A; transition: transform 0.3s, box-shadow 0.3s; }
+    .stat-bar:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .do-card { transition: all 0.35s ease; position: relative; overflow: hidden; }
+    .do-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: #E8940A; transition: width 0.4s ease; }
+    .do-card:hover::after { width: 100%; }
+    .do-card:hover { transform: translateY(-5px); }
+    .big-num { font-family: 'Bebas Neue', cursive; color: #E8940A; line-height: 1; }
+
+    /* Hero animations */
+    @keyframes riseUp { from { opacity:0; transform:translateY(36px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes slideIn { from { opacity:0; transform:translateX(-20px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes growLine { from { opacity:0; width:0; } to { opacity:1; width:72px; } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(1.4); } }
+  </style>
+</head>
+<body>
+
+<!-- ================================================
+     NAVBAR
+================================================ -->
+<nav id="navbar">
+  <div style="max-width:1280px; margin:0 auto; padding:20px 28px; display:flex; align-items:center; justify-content:space-between;">
+
+    <!-- Logo -->
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+      <div style="width:42px; height:42px; background:#E8940A; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        <span style="font-family:'Bebas Neue',cursive; font-size:0.58rem; color:#0F0F0F; letter-spacing:0.04em; line-height:1.15; text-align:center;">LETS<br>TALK</span>
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',cursive; font-size:1.05rem; letter-spacing:0.1em; color:#FAF6EF; line-height:1;">LET'S TALK</div>
+        <div style="font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8940A; line-height:1.3;">Mental Health Malawi</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex" style="align-items:center; gap:32px;">
+      <a href="index.html" class="nav-link active">Home</a>
+
+      <div class="dropdown-parent">
+        <a href="about.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">About <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="goals.html">Our Goals</a>
+          <a href="values.html">Our Values</a>
+        </div>
+      </div>
+
+      <div class="dropdown-parent">
+        <a href="services.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Services <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="services.html">All Services</a>
+          <a href="book-training.html">Book Training</a>
+        </div>
+      </div>
+
+      <div class="dropdown-parent">
+        <a href="impact.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Impact <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+            <a href="impact.html">Impact</a>
+          <a href="programs.html">Programs & Activities</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="future-plans.html">Future Plans</a>
+        </div>
+      </div>
+
+      <div class="dropdown-parent">
+        <a href="resources.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Resources <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="resources.html">Mental Health Education</a>
+          <a href="get-support.html">Get Support</a>
+        </div>
+      </div>
+
+      <div class="dropdown-parent">
+        <a href="partners.html" class="nav-link" style="display:flex; align-items:center; gap:4px;">Partners <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="partners.html">Our Partners</a>
+          <a href="partners.html#become">Become a Partner</a>
+          <a href="partners.html#support">Support Our Mission</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <a href="get-support.html" class="btn-primary hidden lg:inline-block" style="padding:11px 24px; font-size:0.72rem;">Get Support</a>
+
+    <!-- Mobile toggle -->
+    <button id="mob-toggle"
+        class="lg:hidden"
+        style="display:flex; flex-direction:column; gap:7px; padding:10px; background:none; border:none; cursor:pointer;">
+
+  <span style="width:32px; height:3px; background:#FAF6EF; display:block; border-radius:2px;"></span>
+  <span style="width:32px; height:3px; background:#FAF6EF; display:block; border-radius:2px;"></span>
+  <span style="width:32px; height:3px; background:#FAF6EF; display:block; border-radius:2px;"></span>
+
+</button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" style="background:#0F0F0F; border-top:1px solid rgba(232,148,10,0.2); padding:24px 28px 32px; display:none;">
+    <div style="display:flex; flex-direction:column; gap:18px;">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="impact.html" class="nav-link">Impact</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="partners.html" class="nav-link">Partners</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="get-support.html" class="btn-primary" style="text-align:center; margin-top:8px;">Get Support</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ================================================
+     HERO
+================================================ -->
+<section class="hero">
+  <div class="hero-img">
+    <!-- SOURCE: images/hero-workshop.jpg — youth workshop/awareness session, engagement & optimism -->
+    <img src="assets/hero-workshop.jpg" alt="Youth mental health workshop" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+
+  <!-- BG watermark text -->
+  <div style="position:absolute; inset:0; z-index:2; display:flex; align-items:center; justify-content:center; pointer-events:none; overflow:hidden;">
+    <span style="font-family:'Bebas Neue',cursive; font-size:clamp(80px,15vw,240px); color:rgba(232,148,10,0.05); letter-spacing:-0.02em; white-space:nowrap; user-select:none;">MENTAL HEALTH</span>
+  </div>
+
+  <div class="hero-content" style="max-width:1280px; margin:0 auto; padding:120px 28px 80px; width:100%;">
+    <div class="grid lg:grid-cols-12" style="gap:48px; align-items:center;">
+
+      <!-- Copy — left 7 cols -->
+      <div class="lg:col-span-7">
+        <div class="label" style="margin-bottom:20px; animation:slideIn 0.6s ease 0.2s both; opacity:0;">
+          Let's Talk Mental Health Initiative — Malawi
+        </div>
+        <h1 style="font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5.5vw,5.2rem); color:#FAF6EF; line-height:1.07; font-weight:900; animation:riseUp 0.9s ease 0.35s both; opacity:0; text-shadow: 0 2px 20px rgba(0,0,0,0.4);">
+          Empowering<br/>
+          <em style="color:#E8940A; font-style:italic;">Youth Mental</em><br/>
+          Health in Malawi
+        </h1>
+        <div style="width:72px; height:3px; background:#E8940A; margin:28px 0; animation:growLine 0.6s ease 0.7s both; opacity:0;"></div>
+        <p style="font-size:1.05rem; color:rgba(250,246,239,0.82); line-height:1.85; max-width:500px; animation:riseUp 0.9s ease 0.8s both; opacity:0; text-shadow:0 1px 6px rgba(0,0,0,0.5);">
+          Providing mental health education, awareness, and psychosocial support for young people and communities across Malawi — because every mind matters.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:40px; animation:riseUp 0.9s ease 1s both; opacity:0;">
+          <a href="services.html" class="btn-primary">Our Services</a>
+          <a href="get-support.html" class="btn-outline">Get Support</a>
+          <a href="contact.html" class="btn-outline" style="border-color:rgba(250,246,239,0.2); color:rgba(250,246,239,0.5);">Contact Us</a>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:52px; animation:fadeIn 1s ease 1.3s both; opacity:0;">
+          <div style="width:36px; height:1px; background:#E8940A;"></div>
+          <span style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(250,246,239,0.35);">Registered Initiative &nbsp;·&nbsp; Est. 2020 &nbsp;·&nbsp; Lilongwe, Malawi</span>
+        </div>
+      </div>
+
+    <!-- Stats panel — right 5 cols -->
+    <div class="lg:col-span-5" style="display:flex; flex-direction:column; gap:12px; animation:fadeIn 1s ease 0.9s both; opacity:0;">
+      <div class="stat-bar" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); padding:24px 28px;">
+        <div class="big-num" style="font-size:3.8rem;">500+</div>
+        <div style="font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,246,239,0.85); margin-top:4px;">Youth Reached</div>
+        <p style="font-size:0.82rem; color:rgba(250,246,239,0.75); margin-top:10px; line-height:1.65;">Through bi-weekly WhatsApp programs over 4 years of consistent mental health education.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="stat-bar" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); padding:22px 24px;">
+          <div class="big-num" style="font-size:3rem;">4+</div>
+          <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,246,239,0.85); margin-top:4px;">Years Active</div>
+        </div>
+        <div class="stat-bar" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); padding:22px 24px;">
+          <div class="big-num" style="font-size:3rem;">8</div>
+          <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,246,239,0.85); margin-top:4px;">First Aiders</div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; z-index:3; animation:fadeIn 1.5s ease 2s both; opacity:0;">
+    <span style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,246,239,0.3);">Scroll</span>
+    <div style="width:1px; height:44px; background:linear-gradient(to bottom, #E8940A, transparent);"></div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     TICKER
+================================================ -->
+<div style="background:#E8940A; padding:13px 0; overflow:hidden;">
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span style="font-family:'Bebas Neue',cursive; font-size:0.95rem; letter-spacing:0.15em; color:#0F0F0F;">
+        MENTAL HEALTH EDUCATION &nbsp;&nbsp; · &nbsp;&nbsp; PSYCHOLOGICAL FIRST AID &nbsp;&nbsp; · &nbsp;&nbsp; ADVOCACY & AWARENESS &nbsp;&nbsp; · &nbsp;&nbsp; COMMUNITY ENGAGEMENT &nbsp;&nbsp; · &nbsp;&nbsp; BREAKING STIGMA &nbsp;&nbsp; · &nbsp;&nbsp; EMPOWERING MALAWIAN YOUTH &nbsp;&nbsp; · &nbsp;&nbsp; MENTAL HEALTH EDUCATION &nbsp;&nbsp; · &nbsp;&nbsp; PSYCHOLOGICAL FIRST AID &nbsp;&nbsp; · &nbsp;&nbsp; ADVOCACY & AWARENESS &nbsp;&nbsp; · &nbsp;&nbsp; COMMUNITY ENGAGEMENT &nbsp;&nbsp; · &nbsp;&nbsp; BREAKING STIGMA &nbsp;&nbsp; · &nbsp;&nbsp; EMPOWERING MALAWIAN YOUTH &nbsp;&nbsp; ·
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================
+     WHO WE ARE
+================================================ -->
+<section style="padding:100px 0; background:#FAF6EF;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+    <div class="grid lg:grid-cols-2" style="gap:64px; align-items:center;">
+
+      <!-- Image block -->
+      <div class="reveal">
+        <!-- SOURCE: images/about-team.jpg — team/workshop/branded session, credibility & human connection -->
+        <img src="assets/team.jpeg" alt="LEHEMA team at a mental health workshop" style="width:100%; height:420px; object-fit:cover; object-position:center top; display:block;" />
+        <div style="height:5px; background:#E8940A;"></div>
+        <div style="background:#0F0F0F; padding:26px 32px; display:flex; align-items:center; gap:18px;">
+          <div style="width:3px; height:52px; background:#E8940A; flex-shrink:0;"></div>
+          <div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; color:#FAF6EF; font-weight:700; font-style:italic; line-height:1.5;">"To set the mentally captive free."</p>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; margin-top:8px;">Dr. Mary Shalom Nkunika — Founder & Managing Director</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div class="label" style="margin-bottom:16px;">Who We Are</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:900; line-height:1.15; color:#0F0F0F; margin-bottom:24px;">
+          A Registered Mental Health<br/>
+          <em style="color:#E8940A;">Initiative for Malawi's Youth</em>
+        </h2>
+        <p style="font-size:0.98rem; line-height:1.9; color:#3A3530; margin-bottom:18px;">
+          Let's Talk Mental Health Malawi is a youth-focused mental health initiative dedicated to improving access to mental health support, education, and advocacy. Established in 2020, we recognized the significant gaps in mental health support and awareness across Malawi and set out to close them.
+        </p>
+        <p style="font-size:0.98rem; line-height:1.9; color:#3A3530; margin-bottom:36px;">
+          We bridge disparities in mental health care delivery — providing first aid, tackling stigma, and ensuring that affected individuals and communities receive the support they need to lead healthier, fulfilling lives.
+        </p>
+        <a href="about.html" class="btn-dark">Learn More About Us &nbsp;→</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     WHAT WE DO
+================================================ -->
+<section style="padding:100px 0; background:#0F0F0F;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+
+    <!-- Section header -->
+    <div class="grid lg:grid-cols-2" style="gap:32px; margin-bottom:56px; align-items:end;">
+      <div class="reveal">
+        <div class="label" style="margin-bottom:14px;">What We Do</div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:900; line-height:1.15; color:#FAF6EF;">
+          Four Pillars of<br/>
+          <em style="color:#E8940A;">Mental Health Work</em>
+        </h2>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s;">
+        <p style="font-size:0.95rem; color:rgba(250,246,239,0.5); line-height:1.85; margin-bottom:20px;">From classrooms to construction sites, from WhatsApp groups to conference halls — LEHEMA delivers mental health support where it is needed most.</p>
+        <a href="services.html" style="font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:gap 0.3s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">View All Services <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- 4 cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4" style="gap:2px;">
+
+      <div class="do-card reveal" style="background:rgba(255,255,255,0.04); transition-delay:0.05s;">
+        <!-- SOURCE: images/do-education.jpg — workshop/group session -->
+        <img src="assets/edu.jpg" alt="Mental health education session" style="width:100%; height:200px; object-fit:cover; opacity:0.6; display:block;" />
+        <div style="padding:28px 24px;">
+          <div style="width:36px; height:36px; background:#E8940A; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+            <svg width="17" height="17" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#FAF6EF; font-weight:700; margin-bottom:12px;">Mental Health Education</h3>
+          <p style="font-size:0.82rem; color:rgba(250,246,239,0.5); line-height:1.75;">Delivering mental health knowledge in schools, universities, workplaces, and communities.</p>
+        </div>
+      </div>
+
+      <div class="do-card reveal" style="background:rgba(255,255,255,0.04); transition-delay:0.15s;">
+        <!-- SOURCE: images/do-firstaid.jpg — first aid/training session -->
+        <img src="assets/psychological.png" alt="Psychological first aid training" style="width:100%; height:200px; object-fit:cover; opacity:0.6; display:block;" />
+        <div style="padding:28px 24px;">
+          <div style="width:36px; height:36px; background:#E8940A; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+            <svg width="17" height="17" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#FAF6EF; font-weight:700; margin-bottom:12px;">Psychological First Aid Training</h3>
+          <p style="font-size:0.82rem; color:rgba(250,246,239,0.5); line-height:1.75;">Training individuals to respond to mental health crises in schools, workplaces, and emergencies.</p>
+        </div>
+      </div>
+
+      <div class="do-card reveal" style="background:rgba(255,255,255,0.04); transition-delay:0.25s;">
+        <!-- SOURCE: images/do-advocacy.jpg — awareness campaign/school talk -->
+        <img src="assets/advocacy.jpg" alt="Mental health awareness campaign" style="width:100%; height:200px; object-fit:cover; opacity:0.6; display:block;" />
+        <div style="padding:28px 24px;">
+          <div style="width:36px; height:36px; background:#E8940A; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+            <svg width="17" height="17" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#FAF6EF; font-weight:700; margin-bottom:12px;">Awareness & Advocacy</h3>
+          <p style="font-size:0.82rem; color:rgba(250,246,239,0.5); line-height:1.75;">Stigma reduction campaigns, school talks, online programs, and community outreach across Malawi.</p>
+        </div>
+      </div>
+
+      <div class="do-card reveal" style="background:rgba(255,255,255,0.04); transition-delay:0.35s;">
+        <!-- SOURCE: images/do-community.jpg — community/religious gathering -->
+        <img src="assets/community.jpg" alt="Community engagement session" style="width:100%; height:200px; object-fit:cover; opacity:0.6; display:block;" />
+        <div style="padding:28px 24px;">
+          <div style="width:36px; height:36px; background:#E8940A; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+            <svg width="17" height="17" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#FAF6EF; font-weight:700; margin-bottom:12px;">Community Engagement</h3>
+          <p style="font-size:0.82rem; color:rgba(250,246,239,0.5); line-height:1.75;">Reaching youth groups, religious gatherings, construction sites, and rural communities.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     IMPACT SNAPSHOT
+================================================ -->
+<section style="padding:100px 0; background:#FAF6EF;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+
+    <div style="text-align:center; margin-bottom:60px;" class="reveal">
+      <div class="label" style="margin-bottom:12px;">Our Impact</div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,2.9rem); font-weight:900; color:#0F0F0F; line-height:1.2;">
+        Numbers That Tell<br/>
+        <em style="color:#E8940A;">Our Story</em>
+      </h2>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid grid-cols-2 md:grid-cols-4" style="gap:1px; background:#E5DDD0; margin-bottom:56px;">
+      <div class="reveal" style="background:#FAF6EF; padding:48px 28px; text-align:center;">
+        <div class="big-num" style="font-size:5rem;">500+</div>
+        <div style="font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6457; margin-top:8px;">Youth Reached</div>
+      </div>
+      <div class="reveal" style="background:#FAF6EF; padding:48px 28px; text-align:center; transition-delay:0.1s;">
+        <div class="big-num" style="font-size:5rem;">4+</div>
+        <div style="font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6457; margin-top:8px;">Years of Impact</div>
+      </div>
+      <div class="reveal" style="background:#FAF6EF; padding:48px 28px; text-align:center; transition-delay:0.2s;">
+        <div class="big-num" style="font-size:5rem;">8</div>
+        <div style="font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6457; margin-top:8px;">Mental Health First Aiders</div>
+      </div>
+      <div class="reveal" style="background:#FAF6EF; padding:48px 28px; text-align:center; transition-delay:0.3s;">
+        <div class="big-num" style="font-size:5rem;">3+</div>
+        <div style="font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#6B6457; margin-top:8px;">Partner Organizations</div>
+      </div>
+    </div>
+
+    <!-- Photo strip with captions -->
+    <div class="grid md:grid-cols-3" style="gap:3px; margin-bottom:52px;">
+      <div class="reveal" style="overflow:hidden; transition-delay:0.05s;">
+        <!-- SOURCE: images/impact-school.jpg — secondary school awareness session -->
+        <img src="assets/xul-session.jpg" alt="School awareness session" style="width:100%; height:250px; object-fit:cover; transition:transform 0.5s ease; display:block;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        <div style="background:#0F0F0F; padding:16px 20px;">
+          <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">School Awareness Programs</div>
+        </div>
+      </div>
+      <div class="reveal" style="overflow:hidden; transition-delay:0.15s;">
+        <!-- SOURCE: images/impact-workplace.jpg — workplace mental health session -->
+        <img src="assets/workplace.jpg" alt="Workplace mental health program" style="width:100%; height:250px; object-fit:cover; transition:transform 0.5s ease; display:block;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        <div style="background:#0F0F0F; padding:16px 20px;">
+          <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">Workplace Mental Health Talks</div>
+        </div>
+      </div>
+      <div class="reveal" style="overflow:hidden; transition-delay:0.25s;">
+        <!-- SOURCE: images/impact-online.jpg — online workshop/WhatsApp program -->
+        <img src="assets/workshop.jpeg" alt="Online mental health workshop" style="width:100%; height:250px; object-fit:cover; transition:transform 0.5s ease; display:block;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        <div style="background:#0F0F0F; padding:16px 20px;">
+          <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600;">Online Workshops</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;" class="reveal">
+      <a href="impact.html" class="btn-primary">See Full Impact</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================
+     FOOTER
+================================================ -->
+<footer style="background:#0A0A0A; border-top:1px solid rgba(232,148,10,0.15);">
+  <div style="max-width:1280px; margin:0 auto; padding:52px 28px 28px;">
+
+    <div class="grid md:grid-cols-3" style="gap:48px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.06);">
+
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+          <div style="width:38px; height:38px; background:#E8940A; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <span style="font-family:'Bebas Neue',cursive; font-size:0.55rem; color:#0F0F0F; letter-spacing:0.04em; line-height:1.15; text-align:center;">LETS<br>TALK</span>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',cursive; font-size:0.95rem; letter-spacing:0.1em; color:#FAF6EF; line-height:1;">LET'S TALK</div>
+            <div style="font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8940A;">Mental Health Malawi</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:rgba(250,246,239,0.4); line-height:1.75; max-width:240px;">Empowering Malawian youth with mental health knowledge, resources, and skills since 2020.</p>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom:18px;">Quick Links</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="about.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">About Us</a>
+          <a href="services.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Our Services</a>
+          <a href="programs.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Programs & Activities</a>
+          <a href="gallery.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Gallery</a>
+          <a href="get-support.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Get Support</a>
+          <a href="partners.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Partners & Sponsors</a>
+          <a href="contact.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Contact Us</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom:18px;">Get in Touch</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; align-items:flex-start; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; margin-top:6px; flex-shrink:0;"></div>
+            <span style="font-size:0.8rem; color:rgba(250,246,239,0.45); line-height:1.65;">Andrew's Building, Malangalanga, Lilongwe, Malawi</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; flex-shrink:0;"></div>
+            <a href="tel:+265883529443" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">+265 883 529 443</a>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; flex-shrink:0;"></div>
+            <a href="/cdn-cgi/l/email-protection#4b272e3f383f2a2720262e253f2a27232e2a273f23263c0b2c262a222765282426" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s; word-break:break-all;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'"><span class="__cf_email__" data-cfemail="1e727b6a6d6a7f7275737b706a7f72767b7f726a7673695e79737f7772307d7173">[email&#160;protected]</span></a>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <a href="#" style="font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:#E8940A; border:1px solid rgba(232,148,10,0.3); padding:7px 14px; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='#E8940A'; this.style.color='#0F0F0F'" onmouseout="this.style.background='transparent'; this.style.color='#E8940A'">Facebook</a>
+            <a href="#" style="font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:#E8940A; border:1px solid rgba(232,148,10,0.3); padding:7px 14px; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='#E8940A'; this.style.color='#0F0F0F'" onmouseout="this.style.background='transparent'; this.style.color='#E8940A'">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top:24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+      <span style="font-size:0.7rem; letter-spacing:0.05em; color:rgba(250,246,239,0.22);">&copy; 2025 Let's Talk Mental Health Malawi. All rights reserved.</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:7px; height:7px; background:#E8940A; border-radius:50%; animation:pulse-dot 2s infinite;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A;">Active & Growing</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+  // Mobile menu toggle
+  document.getElementById('mob-toggle').addEventListener('click', () => {
+    const m = document.getElementById('mob-menu');
+    m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

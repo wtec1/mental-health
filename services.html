@@ -1,0 +1,323 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Services — Let's Talk Mental Health Malawi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        orange:'#E8940A',
+        black:'#0F0F0F',
+        cream:'#FAF6EF',
+        muted:'#5E584E'
+      },
+      fontFamily:{
+        display:['"Playfair Display"','serif'],
+        body:['"DM Sans"','sans-serif'],
+        bebas:['"Bebas Neue"','cursive']
+      }
+    }
+  }
+}
+</script>
+
+<style>
+body{font-family:'DM Sans',sans-serif;background:#FAF6EF;color:#0F0F0F;}
+.label{font-family:'Bebas Neue',cursive;letter-spacing:.18em;font-size:.8rem;color:#E8940A;}
+.nav-link{text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.service-card{transition:.4s ease;}
+.service-card:hover{transform:translateY(-8px);}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur z-50">
+  <div class="max-w-7xl mx-auto px-7 py-5 flex justify-between items-center">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-orange rounded-full flex items-center justify-center">
+        <span class="font-bebas text-[0.55rem] text-black leading-none text-center">
+          LETS<br>TALK
+        </span>
+      </div>
+      <div>
+        <div class="font-bebas text-sm tracking-widest text-cream">LET'S TALK</div>
+        <div class="text-[0.55rem] tracking-[0.25em] uppercase text-orange">
+          Mental Health Malawi
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-8 text-cream text-[0.75rem] uppercase tracking-wider">
+
+      <a href="index.html" class="hover:text-orange transition">Home</a>
+
+      <!-- ABOUT -->
+      <div class="relative group">
+        <a href="about.html" class="hover:text-orange flex items-center gap-1 transition">
+          About
+          <svg width="10" height="10" fill="none" stroke="currentColor"
+               stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
+          <a href="about.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">About Us</a>
+          <a href="goals.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Goals</a>
+          <a href="values.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Values</a>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="relative group">
+        <a href="services.html" class="text-orange flex items-center gap-1">
+          Services
+          <svg width="10" height="10" fill="none" stroke="currentColor"
+               stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
+          <a href="services.html" class="block px-4 py-2 text-orange">All Services</a>
+          <a href="book-training.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Book Training</a>
+        </div>
+      </div>
+
+      <!-- IMPACT -->
+      <div class="relative group">
+        <a href="impact.html" class="hover:text-orange flex items-center gap-1 transition">
+          Impact
+          <svg width="10" height="10" fill="none" stroke="currentColor"
+               stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
+           <a href="impact.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Impact</a>
+          <a href="programs.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Programs & Activities</a>
+          <a href="gallery.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Gallery</a>
+          <a href="future-plans.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Future Plans</a>
+        </div>
+      </div>
+
+      <!-- RESOURCES -->
+      <div class="relative group">
+        <a href="resources.html" class="hover:text-orange flex items-center gap-1 transition">
+          Resources
+          <svg width="10" height="10" fill="none" stroke="currentColor"
+               stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[250px]">
+          <a href="resources.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Mental Health Education</a>
+          <a href="get-support.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Get Support</a>
+        </div>
+      </div>
+
+      <!-- PARTNERS -->
+      <div class="relative group">
+        <a href="partners.html" class="hover:text-orange flex items-center gap-1 transition">
+          Partners
+          <svg width="10" height="10" fill="none" stroke="currentColor"
+               stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <div class="absolute hidden group-hover:block bg-black border-t-2 border-orange min-w-[190px]">
+          <a href="partners.html" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Our Partners</a>
+          <a href="partners.html#become" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Become a Partner</a>
+          <a href="partners.html#support" class="block px-4 py-2 hover:bg-orange hover:text-black transition">Support Our Mission</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="hover:text-orange transition">Contact</a>
+
+    </div>
+
+    <!-- CTA -->
+    <a href="get-support.html"
+       class="hidden lg:inline-block bg-orange text-black px-6 py-3 text-xs font-bold uppercase tracking-wider hover:scale-105 transition">
+      Get Support
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button id="menuBtn" class="lg:hidden text-cream text-2xl">☰</button>
+
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="pt-40 pb-28 bg-black relative overflow-hidden">
+<div class="absolute inset-0 opacity-15">
+  <!-- assets/services-hero.jpg -->
+<img src="assets/Designer.jpeg" class="w-full h-full object-cover">
+</div>
+
+<div class="relative max-w-6xl mx-auto px-7 text-cream">
+<div class="label mb-6">What We Offer</div>
+<h1 class="font-display text-5xl md:text-7xl font-black leading-tight max-w-3xl">
+Professional <span class="text-orange">Mental Health Services</span>
+</h1>
+<div class="w-16 h-[3px] bg-orange mt-8"></div>
+<p class="mt-8 max-w-xl text-cream/70 text-lg leading-relaxed">
+Evidence-based, youth-centered programs designed to educate, empower, and strengthen communities across Malawi.
+</p>
+</div>
+</section>
+
+
+<!-- ================= SERVICES GRID ================= -->
+<section class="py-28">
+<div class="max-w-6xl mx-auto px-7">
+
+<div class="grid lg:grid-cols-3 gap-12">
+
+<!-- SERVICE 1 -->
+<div class="service-card reveal bg-white shadow-sm p-10 border-t-4 border-orange">
+<div class="label mb-4">Training</div>
+<h3 class="font-display text-2xl font-bold mb-4">Mental Health First Aid</h3>
+<p class="text-muted leading-relaxed mb-6">
+Equipping individuals with skills to recognize, understand, and respond effectively to mental health challenges.
+</p>
+
+<div class="text-sm space-y-2 mb-6">
+<div>• Schools</div>
+<div>• Teachers</div>
+<div>• Youth Groups</div>
+<div>• Workplaces</div>
+</div>
+
+<a href="book-training.html" class="inline-block bg-black text-cream px-6 py-3 text-xs font-bold uppercase tracking-wider">
+Request Training
+</a>
+</div>
+
+
+<!-- SERVICE 2 -->
+<div class="service-card reveal bg-white shadow-sm p-10 border-t-4 border-orange">
+<div class="label mb-4">Crisis Support</div>
+<h3 class="font-display text-2xl font-bold mb-4">Psychological First Aid</h3>
+<p class="text-muted leading-relaxed mb-6">
+Immediate emotional and psychological support during crises, emergencies, or traumatic events.
+</p>
+
+<div class="text-sm space-y-2 mb-6">
+<div>• Communities</div>
+<div>• Emergency Responders</div>
+<div>• Institutions</div>
+</div>
+
+<a href="contact.html" class="inline-block bg-black text-cream px-6 py-3 text-xs font-bold uppercase tracking-wider">
+Book a Session
+</a>
+</div>
+
+
+<!-- SERVICE 3 -->
+<div class="service-card reveal bg-white shadow-sm p-10 border-t-4 border-orange">
+<div class="label mb-4">Advocacy</div>
+<h3 class="font-display text-2xl font-bold mb-4">Awareness & Advocacy Programs</h3>
+<p class="text-muted leading-relaxed mb-6">
+Structured awareness initiatives that address stigma, promote help-seeking behavior, and normalize mental health conversations.
+</p>
+
+<div class="text-sm space-y-2 mb-6">
+<div>• School Talks</div>
+<div>• Community Outreach</div>
+<div>• Workplace Programs</div>
+</div>
+
+<a href="contact.html" class="inline-block bg-black text-cream px-6 py-3 text-xs font-bold uppercase tracking-wider">
+Schedule Program
+</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+
+<!-- ================= DELIVERY FORMAT STRIP ================= -->
+<section class="py-24 bg-black text-cream">
+<div class="max-w-6xl mx-auto px-7 text-center">
+
+<div class="label mb-6">How We Deliver</div>
+<h2 class="font-display text-4xl font-black mb-10">Flexible & Professional Formats</h2>
+
+<div class="grid md:grid-cols-3 gap-12 text-lg">
+<div class="reveal">
+<div class="font-semibold mb-2">Workshops</div>
+<p class="text-cream/70">Interactive and practical learning experiences.</p>
+</div>
+<div class="reveal">
+<div class="font-semibold mb-2">Seminars</div>
+<p class="text-cream/70">Expert-led educational sessions for institutions.</p>
+</div>
+<div class="reveal">
+<div class="font-semibold mb-2">Training Programs</div>
+<p class="text-cream/70">Structured, comprehensive skill-building modules.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+<!-- ================= CTA ================= -->
+<section class="py-20 bg-orange">
+<div class="max-w-6xl mx-auto px-7 flex flex-wrap justify-between items-center gap-10">
+
+<h2 class="font-display text-3xl md:text-4xl font-black text-black">
+Ready to Strengthen Mental Health in Your Institution?
+</h2>
+
+<div class="flex gap-5">
+<a href="book-training.html" class="bg-black text-cream px-8 py-4 text-xs font-bold uppercase tracking-wider">
+Request Training
+</a>
+<a href="contact.html" class="border-2 border-black px-8 py-4 text-xs font-bold uppercase tracking-wider">
+Contact Us
+</a>
+</div>
+
+</div>
+</section>
+
+
+<script>
+const btn=document.getElementById('menuBtn');
+const menu=document.getElementById('mobileMenu');
+btn.addEventListener('click',()=>{menu.classList.toggle('hidden');});
+
+const reveal=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('visible');}
+});
+},{threshold:.15});
+reveal.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Values — Let's Talk Mental Health Malawi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: '#E8940A',
+            black: '#0F0F0F',
+            cream: '#FAF6EF',
+            muted: '#5E584E'
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+            bebas: ['"Bebas Neue"', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family:'DM Sans', sans-serif; background:#FAF6EF; color:#0F0F0F; }
+    .label { font-family:'Bebas Neue',cursive; letter-spacing:0.18em; font-size:.8rem; color:#E8940A; }
+    .nav-link { text-transform:uppercase; font-size:.75rem; letter-spacing:.08em; }
+    .reveal { opacity:0; transform:translateY(30px); transition:.8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- =========================
+NAVIGATION
+========================= -->
+<nav class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur z-50">
+  <div class="max-w-7xl mx-auto px-7 py-5 flex justify-between items-center">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-orange rounded-full flex items-center justify-center">
+        <span class="font-bebas text-[0.55rem] text-black text-center leading-none">LETS<br>TALK</span>
+      </div>
+      <div>
+        <div class="font-bebas text-sm tracking-widest text-cream">LET'S TALK</div>
+        <div class="text-[0.55rem] tracking-[0.25em] uppercase text-orange">Mental Health Malawi</div>
+      </div>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-8 text-cream">
+
+      <a href="index.html" class="nav-link hover:text-orange">Home</a>
+
+      <div class="relative group">
+        <a href="about.html" class="nav-link hover:text-orange flex items-center gap-1">About</a>
+        <div class="absolute top-full left-0 bg-black border-t-2 border-orange hidden group-hover:block min-w-[200px]">
+          <a href="about.html" class="block px-5 py-3 text-cream/70 hover:bg-orange hover:text-black">About Us</a>
+          <a href="goals.html" class="block px-5 py-3 text-cream/70 hover:bg-orange hover:text-black">Our Goals</a>
+          <a href="values.html" class="block px-5 py-3 bg-orange text-black">Our Values</a>
+        </div>
+      </div>
+
+      <a href="services.html" class="nav-link hover:text-orange">Services</a>
+      <a href="impact.html" class="nav-link hover:text-orange">Impact</a>
+      <a href="resources.html" class="nav-link hover:text-orange">Resources</a>
+      <a href="partners.html" class="nav-link hover:text-orange">Partners</a>
+      <a href="contact.html" class="nav-link hover:text-orange">Contact</a>
+
+    </div>
+
+    <!-- CTA -->
+    <a href="get-support.html" class="hidden lg:inline-block bg-orange text-black px-6 py-3 text-xs font-bold uppercase tracking-wider">
+      Get Support
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button id="menuBtn" class="lg:hidden text-cream">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden bg-black border-t border-orange/30">
+    <div class="flex flex-col px-7 py-6 gap-5 text-cream text-sm uppercase tracking-wider">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="goals.html">Our Goals</a>
+      <a href="values.html" class="text-orange">Our Values</a>
+      <a href="services.html">Services</a>
+      <a href="impact.html">Impact</a>
+      <a href="resources.html">Resources</a>
+      <a href="partners.html">Partners</a>
+      <a href="contact.html">Contact</a>
+      <a href="get-support.html" class="bg-orange text-black text-center py-3 font-semibold">Get Support</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- =========================
+HERO
+========================= -->
+<section class="pt-40 pb-24 bg-black relative overflow-hidden">
+
+  <div class="absolute inset-0 opacity-15">
+    <!-- assets/values-hero.jpg -->
+    <img src="assets/heye.png" class="w-full h-full object-cover" />
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-7 text-cream">
+
+    <div class="label mb-6">Guiding Principles</div>
+
+    <h1 class="font-display text-5xl md:text-7xl font-black leading-tight max-w-3xl">
+      Our <span class="text-orange">Values</span>
+    </h1>
+
+    <div class="w-16 h-[3px] bg-orange mt-8"></div>
+
+    <p class="mt-8 max-w-xl text-cream/70 text-lg leading-relaxed">
+      The principles that define our culture, shape our programs, and guide how we serve communities.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =========================
+VALUES GRID
+========================= -->
+<section class="py-28">
+
+  <div class="max-w-6xl mx-auto px-7">
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+
+      <!-- Love -->
+      <div class="reveal">
+        <div class="label mb-4">Love</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Compassion & Care</h3>
+        <p class="text-muted leading-relaxed">
+          We approach every individual with compassion, dignity, and genuine care — recognizing the humanity in every mental health journey.
+        </p>
+      </div>
+
+      <!-- Hope -->
+      <div class="reveal">
+        <div class="label mb-4">Hope</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Optimism & Recovery</h3>
+        <p class="text-muted leading-relaxed">
+          We believe in the possibility of healing and recovery. Our work fosters confidence, optimism, and belief in brighter futures.
+        </p>
+      </div>
+
+      <!-- Empathy -->
+      <div class="reveal">
+        <div class="label mb-4">Empathy</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Understanding Experiences</h3>
+        <p class="text-muted leading-relaxed">
+          We listen deeply, validate experiences, and create safe spaces where young people feel heard and understood.
+        </p>
+      </div>
+
+      <!-- Acceptance -->
+      <div class="reveal">
+        <div class="label mb-4">Acceptance</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Inclusivity & Dignity</h3>
+        <p class="text-muted leading-relaxed">
+          We uphold inclusivity and respect — ensuring everyone is treated with dignity regardless of background or circumstance.
+        </p>
+      </div>
+
+      <!-- Freedom -->
+      <div class="reveal">
+        <div class="label mb-4">Freedom</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Authentic Living</h3>
+        <p class="text-muted leading-relaxed">
+          We promote environments where individuals can express themselves freely and seek support without fear of stigma.
+        </p>
+      </div>
+
+      <!-- Resilience -->
+      <div class="reveal">
+        <div class="label mb-4">Resilience</div>
+        <h3 class="font-display text-2xl font-bold mb-4">Strength Through Adversity</h3>
+        <p class="text-muted leading-relaxed">
+          We empower youth with the skills and support systems needed to navigate life’s challenges with strength and confidence.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+CTA
+========================= -->
+<section class="py-20 bg-orange">
+
+  <div class="max-w-6xl mx-auto px-7 flex flex-wrap justify-between items-center gap-10">
+
+    <h2 class="font-display text-3xl md:text-4xl font-black text-black">
+      Values That Shape Real Impact
+    </h2>
+
+    <div class="flex gap-5">
+      <a href="goals.html" class="bg-black text-cream px-8 py-4 text-xs font-bold uppercase tracking-wider">
+        Our Goals
+      </a>
+      <a href="services.html" class="border-2 border-black px-8 py-4 text-xs font-bold uppercase tracking-wider">
+        Our Services
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- FOOTER -->
+<!-- footer -->
+<footer style="background:#0A0A0A; border-top:1px solid rgba(232,148,10,0.15);">
+  <div style="max-width:1280px; margin:0 auto; padding:52px 28px 28px;">
+    <div class="grid md:grid-cols-3" style="gap:48px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+          <div style="width:38px; height:38px; background:#E8940A; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <span style="font-family:'Bebas Neue',cursive; font-size:0.55rem; color:#0F0F0F; letter-spacing:0.04em; line-height:1.15; text-align:center;">LETS<br>TALK</span>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',cursive; font-size:0.95rem; letter-spacing:0.1em; color:#FAF6EF; line-height:1;">LET'S TALK</div>
+            <div style="font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:#E8940A;">Mental Health Malawi</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:rgba(250,246,239,0.4); line-height:1.75; max-width:240px;">Empowering Malawian youth with mental health knowledge, resources, and skills since 2020.</p>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:18px;">Quick Links</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="index.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Home</a>
+          <a href="about.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">About Us</a>
+          <a href="services.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Our Services</a>
+          <a href="get-support.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Get Support</a>
+          <a href="contact.html" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:18px;">Get in Touch</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; align-items:flex-start; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; margin-top:6px; flex-shrink:0;"></div>
+            <span style="font-size:0.8rem; color:rgba(250,246,239,0.45); line-height:1.65;">Andrew's Building, Malangalanga, Lilongwe, Malawi</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; flex-shrink:0;"></div>
+            <a href="tel:+265883529443" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">+265 883 529 443</a>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:6px; height:6px; background:#E8940A; border-radius:50%; flex-shrink:0;"></div>
+            <a href="mailto:letstalkmentalhealthmw@gmail.com" style="font-size:0.8rem; color:rgba(250,246,239,0.45); text-decoration:none; transition:color 0.2s; word-break:break-all;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(250,246,239,0.45)'">letstalkmentalhealthmw@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding-top:24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+      <span style="font-size:0.7rem; letter-spacing:0.05em; color:rgba(250,246,239,0.22);">&copy; 2025 Let's Talk Mental Health Malawi. All rights reserved.</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:7px; height:7px; background:#E8940A; border-radius:50%; animation:pulse-dot 2s infinite;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A;">Active & Growing</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Mobile Toggle
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  // Reveal animation
+  const reveal = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+      }
+    });
+  },{threshold:.15});
+  reveal.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
