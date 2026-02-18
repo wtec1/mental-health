@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Our Partners — Let's Talk Mental Health Malawi</title>
+<title>Mental Health Resources — Let's Talk Mental Health Malawi</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -78,16 +78,11 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
   color:#E8940A;
 }
 
-</style>
-</head>
+</style></head>
 
 <body>
 
-<!-- ===================================================== -->
-<!-- NAV (PARTNERS ACTIVE) -->
-<!-- ===================================================== -->
-
-<nav id="navbar">
+    <nav id="navbar">
 
   <!-- INNER NAV WRAPPER -->
   <div style="max-width:1280px; margin:0 auto; padding:20px 28px; display:flex; align-items:center; justify-content:space-between;">
@@ -128,7 +123,7 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
       <div class="dropdown-parent">
         <a href="impact.html" class="nav-link">Impact</a>
         <div class="dropdown-menu">
-            <a href="impact.html">Impact</a>
+         <a href="impact.html">Impact</a>
           <a href="programs.html">Programs</a>
           <a href="gallery.html">Gallery</a>
           <a href="future-plans.html">Future Plans</a>
@@ -148,22 +143,22 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
         <div class="dropdown-menu">
           <a href="partners.html">Our Partners</a>
           <a href="#become">Become a Partner</a>
-          <a href="#support">Support Our Mission</a>
+          <a href="donate.html">Support Our Mission</a>
         </div>
       </div>
 
       <a href="contact.html" class="nav-link">Contact</a>
 
     </div>
+    <!-- END DESKTOP MENU -->
 
-    <!-- MOBILE TOGGLE (ALWAYS OUTSIDE DESKTOP MENU) -->
+    <!-- MOBILE TOGGLE -->
     <button id="menuBtn" class="lg:hidden text-white text-2xl focus:outline-none">
-
       ☰
     </button>
 
   </div>
-  <!-- END INNER WRAPPER -->
+  <!-- END INNER NAV WRAPPER -->
 
 
   <!-- MOBILE MENU -->
@@ -182,24 +177,18 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
       <a href="partners.html" class="hover:text-orange transition">Partners</a>
       <a href="contact.html" class="hover:text-orange transition">Contact</a>
 
-     <a href="get-support.html"
-   class="mt-4 inline-block text-center
-          bg-[#E8940A] text-black
-          text-sm font-semibold uppercase tracking-wider
-          px-8 py-3
-          transition-all duration-300
-          hover:bg-[#F5A623] hover:-translate-y-[2px]">Get Support</a>
-
+      <a href="get-support.html"
+         class="mt-4 inline-block text-center bg-[#E8940A] text-black text-sm font-semibold uppercase tracking-wider px-8 py-3 transition-all duration-300 hover:bg-[#F5A623] hover:-translate-y-[2px]">
+        Get Support
+      </a>
 
     </div>
 
   </div>
 
 </nav>
-<!-- ===================================================== -->
-<!-- ===================================================== -->
-<!-- HERO -->
-<!-- ===================================================== -->
+
+<!-- ================= HERO ================= -->
 
 <section style="position:relative; padding:180px 0 100px; overflow:hidden;">
 
@@ -207,42 +196,32 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
   <div style="
       position:absolute;
       inset:0;
-      background-image:url('assets/Designer.jpeg');
+      background-image:url('assets/resource.webp');
       background-size:cover;
       background-position:center;
-      background-repeat:no-repeat;
-      z-index:0;">
+      background-repeat:no-repeat;">
   </div>
 
-  <!-- Dark Overlay -->
-  <div style="
-      position:absolute;
-      inset:0;
-      background:rgba(15,15,15,0.75);
-      z-index:1;">
-  </div>
+  <!-- Overlay -->
+  <div style="position:absolute; inset:0; background:rgba(15,15,15,0.75);"></div>
 
   <!-- Content -->
   <div style="max-width:1200px; margin:0 auto; padding:0 28px; position:relative; z-index:2;">
 
-    <div class="label mb-6">Collaboration & Support</div>
+    <div class="label mb-6">Education & Awareness</div>
 
     <h1 style="
       font-family:'Playfair Display',serif;
       font-size:clamp(2.5rem,5vw,4.5rem);
       font-weight:900;
       color:#FAF6EF;">
-      Our <span style="color:#E8940A;">Partners</span>
+      Mental Health <span style="color:#E8940A;">Resources</span>
     </h1>
 
     <div style="width:70px; height:3px; background:#E8940A; margin:30px 0;"></div>
 
-    <p style="
-      max-width:650px;
-      color:rgba(250,246,239,0.85);
-      font-size:1.05rem;
-      line-height:1.8;">
-      We collaborate with institutions, professionals, and organizations committed to advancing youth mental health in Malawi.
+    <p style="max-width:700px; color:rgba(250,246,239,0.85); font-size:1.1rem; line-height:1.9;">
+      Access structured articles, practical tips, awareness materials, and downloadable resources designed to promote youth mental wellbeing across Malawi.
     </p>
 
   </div>
@@ -250,93 +229,79 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
 </section>
 
 
-<!-- ===================================================== -->
-<!-- PARTNER LOGOS GRID -->
-<!-- ===================================================== -->
+<!-- ================= RESOURCE CATEGORIES ================= -->
 
-<section style="padding:100px 0;">
-  <div style="max-width:1200px; margin:0 auto; padding:0 28px;">
+<section style="padding:120px 0;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 40px;">
 
-    <div class="label" style="margin-bottom:40px;">
-      Current & Supporting Partners
-    </div>
+    <div class="grid md:grid-cols-2 gap-60">
 
-    <div class="grid md:grid-cols-3 gap-12 items-center">
-
-      <!-- LOGO -->
-      <div style="background:#FFFFFF; padding:40px; border:1px solid #E5E5E5; display:flex; align-items:center; justify-content:center;">
-        <img src="assets/p3.png"
-             alt="Partner Logo"
-             style="max-height:70px; width:auto; object-fit:contain;">
-      </div>
-
-      <!-- LOGO -->
-      <div style="background:#FFFFFF; padding:40px; border:1px solid #E5E5E5; display:flex; align-items:center; justify-content:center;">
-        <img src="assets/p2.png"
-             alt="Partner Logo"
-             style="max-height:70px; width:auto; object-fit:contain;">
-      </div>
-
-      <!-- LOGO -->
-      <div style="background:#FFFFFF; padding:40px; border:1px solid #E5E5E5; display:flex; align-items:center; justify-content:center;">
-        <img src="assets/P1.png"
-             alt="Partner Logo"
-             style="max-height:70px; width:auto; object-fit:contain;">
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ===================================================== -->
-<!-- WHY PARTNER -->
-<!-- ===================================================== -->
-
-<section style="padding:120px 0; background:#FAF6EF;">
-  <div style="max-width:1400px; margin:0 auto; padding:0 60px;">
-
-    <div class="label" style="margin-bottom:50px;">
-      Why Partner With Us
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:70px;">
-
+      <!-- ARTICLES -->
       <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:800; margin-bottom:14px;">
-          Expand Mental Health Awareness
+        <div class="label mb-4">Articles</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:800; margin-bottom:20px;">
+          Evidence-Based Articles
         </h3>
-        <p style="color:#5E584E; line-height:1.9;">
-          Collaborate in delivering structured youth-centered programs that increase understanding and reduce stigma nationwide.
+        <p style="color:#5E584E; line-height:1.9; margin-bottom:30px;">
+          Research-informed articles on youth mental health, anxiety, depression, resilience, and community wellbeing.
         </p>
+
+        <!-- Dynamic WordPress Link -->
+        <a href="https://yourdomain.com/blog/"
+           class="inline-block bg-black text-white px-6 py-3 text-sm uppercase tracking-wider transition hover:bg-[#1A1A1A]">
+          View Articles
+        </a>
       </div>
 
+
+      <!-- TIPS -->
       <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:800; margin-bottom:14px;">
-          Support Evidence-Based Programs
+        <div class="label mb-4">Tips</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:800; margin-bottom:20px;">
+          Practical Mental Health Tips
         </h3>
-        <p style="color:#5E584E; line-height:1.9;">
-          Strengthen community systems through professionally delivered, research-informed mental health initiatives.
+        <p style="color:#5E584E; line-height:1.9; margin-bottom:30px;">
+          Short, actionable guidance for students, teachers, parents, and institutions to strengthen mental wellbeing.
         </p>
+
+        <a href="https://yourdomain.com/category/tips/"
+           class="inline-block bg-black text-white px-6 py-3 text-sm uppercase tracking-wider transition hover:bg-[#1A1A1A]">
+          Explore Tips
+        </a>
       </div>
 
+
+      <!-- AWARENESS MATERIALS -->
       <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:800; margin-bottom:14px;">
-          Strengthen Youth Wellbeing Systems
+        <div class="label mb-4">Awareness Materials</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:800; margin-bottom:20px;">
+          Campaign & Educational Materials
         </h3>
-        <p style="color:#5E584E; line-height:1.9;">
-          Invest in sustainable structures that promote resilience, early intervention, and long-term wellbeing.
+        <p style="color:#5E584E; line-height:1.9; margin-bottom:30px;">
+          Posters, campaign resources, and structured educational content for schools and community programs.
         </p>
+
+        <a href="https://yourdomain.com/category/awareness-materials/"
+           class="inline-block bg-black text-white px-6 py-3 text-sm uppercase tracking-wider transition hover:bg-[#1A1A1A]">
+          View Materials
+        </a>
       </div>
 
+
+      <!-- DOWNLOADABLES -->
       <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:800; margin-bottom:14px;">
-          Contribute to Policy & Reform
+        <div class="label mb-4">Downloadables</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:800; margin-bottom:20px;">
+          Guides & Resource Downloads
         </h3>
-        <p style="color:#5E584E; line-height:1.9;">
-          Partner in advancing youth-friendly policy reforms and national awareness campaigns.
+        <p style="color:#5E584E; line-height:1.9; margin-bottom:30px;">
+          Downloadable PDFs, toolkits, and structured mental health guides for institutions and individuals.
         </p>
+
+        <a href="https://yourdomain.com/resources-downloads/"
+           class="inline-block bg-[#E8940A] text-black px-6 py-3 text-sm uppercase tracking-wider transition hover:bg-[#F5A623]">
+          Download Resources
+        </a>
       </div>
 
     </div>
@@ -345,28 +310,19 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
 </section>
 
 
-<!-- ===================================================== -->
-<!-- CTA -->
-<!-- ===================================================== -->
+<!-- ================= CTA ================= -->
 
-<section id="become" style="padding:80px 0; background:#E8940A;">
-  <div style="max-width:1200px; margin:0 auto; padding:0 28px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:30px;">
+<section style="padding:80px 0; background:#0F0F0F;">
+  <div style="max-width:1000px; margin:0 auto; padding:0 28px; text-align:center;">
 
-    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:900; color:#0F0F0F;">
-      Become a Partner in Transforming Youth Mental Health
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:900; color:#FAF6EF;">
+      Need Structured Mental Health Support?
     </h2>
 
-    <div style="display:flex; gap:16px;">
-      <a href="contact.html"
-         style="background:#0F0F0F; color:#FAF6EF; padding:14px 28px; font-size:0.78rem; font-weight:700; text-transform:uppercase; text-decoration:none;">
-         Partner With Us
-      </a>
-
-      <a href="contact.html#support"
-         style="border:2px solid #0F0F0F; padding:14px 28px; font-size:0.78rem; font-weight:700; text-transform:uppercase; text-decoration:none; color:#0F0F0F;">
-         Support Our Mission
-      </a>
-    </div>
+    <a href="get-support.html"
+       class="mt-6 inline-block bg-[#E8940A] text-black px-8 py-3 text-sm uppercase tracking-wider transition hover:bg-[#F5A623]">
+       Get Support
+    </a>
 
   </div>
 </section>
@@ -388,7 +344,6 @@ body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
     }
   });
 </script>
-
 
 </body>
 </html>

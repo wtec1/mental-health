@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Request Training — Let's Talk Mental Health Malawi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+<style>
+body { font-family:'DM Sans',sans-serif; background:#FAF6EF; color:#0F0F0F; }
+
+.label {
+  font-family:'Bebas Neue',cursive;
+  letter-spacing:0.18em;
+  font-size:0.8rem;
+  color:#E8940A;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+
+<section style="position:relative; padding:180px 0 120px; overflow:hidden;">
+
+  <!-- Background Image -->
+  <div style="
+      position:absolute;
+      inset:0;
+      background-image:url('assets/aid.png');
+      background-size:cover;
+      background-position:center;">
+  </div>
+
+  <!-- Overlay -->
+  <div style="position:absolute; inset:0; background:rgba(15,15,15,0.8);"></div>
+
+  <!-- Content -->
+  <div style="max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:2;">
+
+    <div class="label mb-6">Professional Mental Health Training</div>
+
+    <h1 style="
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.5rem,5vw,4.5rem);
+      font-weight:900;
+      color:#FAF6EF;">
+      Request Training / <span style="color:#E8940A;">Workshop</span>
+    </h1>
+
+    <div style="width:70px; height:3px; background:#E8940A; margin:30px 0;"></div>
+
+    <p style="max-width:700px; color:rgba(250,246,239,0.85); font-size:1.1rem; line-height:1.9;">
+      Partner with us to deliver structured, evidence-based mental health education programs tailored for schools, institutions, workplaces, and communities.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= VALUE SECTION ================= -->
+
+<section style="padding:100px 0;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 40px;">
+
+    <div class="grid md:grid-cols-3 gap-70">
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:14px;">
+          Structured Programs
+        </h3>
+        <p style="color:#5E584E; line-height:1.8;">
+          Professionally designed workshops aligned with youth mental health best practices.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:14px;">
+          Customizable Delivery
+        </h3>
+        <p style="color:#5E584E; line-height:1.8;">
+          Sessions tailored to your institution’s needs and audience demographics.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:800; margin-bottom:14px;">
+          Measurable Impact
+        </h3>
+        <p style="color:#5E584E; line-height:1.8;">
+          Programs focused on awareness, stigma reduction, and practical resilience tools.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FORM SECTION ================= -->
+
+<section style="padding:120px 0; background:#0F0F0F;">
+  <div style="max-width:800px; margin:0 auto; padding:0 28px;">
+
+    <div class="label mb-6">Submit Training Request</div>
+
+    <form action="send.php" method="POST">
+
+      <!-- Hidden WP Action -->
+      <input type="hidden" name="action" value="submit_training_request">
+
+      <!-- Organization Name -->
+      <div style="margin-bottom:30px;">
+        <label style="color:#FAF6EF; display:block; margin-bottom:8px; font-size:0.85rem;">
+          Organization Name
+        </label>
+        <input type="text" name="organization_name" required
+               style="width:100%; padding:14px; background:#1A1A1A; border:1px solid #333; color:#FAF6EF;">
+      </div>
+
+      <!-- Training Type -->
+      <div style="margin-bottom:30px;">
+        <label style="color:#FAF6EF; display:block; margin-bottom:8px; font-size:0.85rem;">
+          Training Type
+        </label>
+        <select name="training_type" required
+                style="width:100%; padding:14px; background:#1A1A1A; border:1px solid #333; color:#FAF6EF;">
+          <option value="">Select Training</option>
+          <option value="mental-health-first-aid">Mental Health First Aid</option>
+          <option value="psychological-first-aid">Psychological First Aid</option>
+          <option value="awareness-workshop">Awareness Workshop</option>
+          <option value="custom-program">Custom Program</option>
+        </select>
+      </div>
+
+      <!-- Contact Person -->
+      <div style="margin-bottom:30px;">
+        <label style="color:#FAF6EF; display:block; margin-bottom:8px; font-size:0.85rem;">
+          Contact Person
+        </label>
+        <input type="text" name="contact_person" required
+               style="width:100%; padding:14px; background:#1A1A1A; border:1px solid #333; color:#FAF6EF;">
+      </div>
+
+      <!-- Message -->
+      <div style="margin-bottom:40px;">
+        <label style="color:#FAF6EF; display:block; margin-bottom:8px; font-size:0.85rem;">
+          Message
+        </label>
+        <textarea name="message" rows="5" required
+                  style="width:100%; padding:14px; background:#1A1A1A; border:1px solid #333; color:#FAF6EF;"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit"
+              style="width:100%; padding:16px; background:#E8940A; color:#0F0F0F;
+                     font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+                     transition:all 0.3s;">
+        Submit Request
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+</body>
+</html>

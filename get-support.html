@@ -1,0 +1,222 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Support — Let's Talk Mental Health Malawi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #FAF6EF; color: #0F0F0F; overflow-x: hidden; min-height: 100vh; }
+
+    .label { font-family: 'Bebas Neue', cursive; font-size: 0.82rem; letter-spacing: 0.18em; color: #E8940A; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .support-card { border-left: 3px solid #E8940A; padding: 28px 32px; background: #fff; transition: box-shadow 0.3s; }
+    .support-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+    .contact-row { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(15,15,15,0.08); transition: padding-left 0.3s; cursor: default; }
+    .contact-row:hover { padding-left: 8px; }
+    .contact-row:last-child { border-bottom: none; }
+
+    .dot { width: 8px; height: 8px; background: #E8940A; border-radius: 50%; flex-shrink: 0; }
+
+    a { color: inherit; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes riseUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+
+<!-- Back nav -->
+<div style="padding:20px 28px; position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(250,246,239,0.92); backdrop-filter:blur(10px); border-bottom:1px solid rgba(15,15,15,0.06);">
+  <div style="max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;">
+    <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+      <div style="width:36px; height:36px; background:#E8940A; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',cursive; font-size:0.52rem; color:#0F0F0F; line-height:1.1; text-align:center;">LETS<br>TALK</span>
+      </div>
+      <div style="font-family:'Bebas Neue',cursive; font-size:0.9rem; letter-spacing:0.1em; color:#0F0F0F; line-height:1;">LET'S TALK <span style="color:#E8940A;">MW</span></div>
+    </a>
+    <a href="index.html" style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(15,15,15,0.45); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='rgba(15,15,15,0.45)'">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Site
+    </a>
+  </div>
+</div>
+
+
+<div style="max-width:860px; margin:0 auto; padding:120px 28px 80px;">
+
+  <!-- HEADLINE -->
+  <div style="text-align:center; margin-bottom:72px;">
+    <div class="label" style="margin-bottom:16px; animation:fadeIn 0.6s ease 0.2s both; opacity:0;">You Are Not Alone</div>
+    <h1 style="font-family:'Playfair Display',serif; font-size:clamp(2.8rem,6vw,5rem); color:#0F0F0F; line-height:1.08; font-weight:900; animation:riseUp 0.9s ease 0.3s both; opacity:0;">
+      Need <em style="color:#E8940A;">Support?</em>
+    </h1>
+    <div style="width:60px; height:3px; background:#E8940A; margin:24px auto; animation:riseUp 0.6s ease 0.5s both; opacity:0;"></div>
+    <p style="font-size:1.05rem; color:rgba(15,15,15,0.6); line-height:1.9; max-width:520px; margin:0 auto; animation:riseUp 0.9s ease 0.6s both; opacity:0;">
+      Reaching out is a sign of strength. Whatever you are going through, you do not have to face it alone. We are here — and so is help.
+    </p>
+  </div>
+
+
+  <!-- WHEN TO SEEK HELP -->
+  <div class="reveal" style="margin-bottom:56px;">
+    <div class="label" style="margin-bottom:20px;">When to Seek Help</div>
+    <div style="display:grid; gap:12px;">
+
+      <div class="support-card">
+        <p style="font-size:0.95rem; line-height:1.8; color:#3A3530;">You feel overwhelmed, anxious, or deeply sad for an extended period of time.</p>
+      </div>
+      <div class="support-card">
+        <p style="font-size:0.95rem; line-height:1.8; color:#3A3530;">Your emotions are affecting your work, relationships, sleep, or daily routine.</p>
+      </div>
+      <div class="support-card">
+        <p style="font-size:0.95rem; line-height:1.8; color:#3A3530;">You are experiencing thoughts of harming yourself or others.</p>
+      </div>
+      <div class="support-card">
+        <p style="font-size:0.95rem; line-height:1.8; color:#3A3530;">You feel isolated, hopeless, or like things will never get better.</p>
+      </div>
+      <div class="support-card">
+        <p style="font-size:0.95rem; line-height:1.8; color:#3A3530;">You are using substances or other behaviours to cope with difficult feelings.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- GUIDANCE FOR INDIVIDUALS -->
+  <div class="reveal" style="margin-bottom:56px; transition-delay:0.1s;">
+    <div class="label" style="margin-bottom:20px;">Guidance for Individuals</div>
+    <div style="background:#0F0F0F; padding:40px 36px;">
+      <p style="font-size:1rem; color:rgba(250,246,239,0.75); line-height:1.9; margin-bottom:24px;">
+        You do not need to be in a crisis to ask for help. If something does not feel right — trust that feeling. Here is how to take the first step:
+      </p>
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:32px; height:32px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Bebas Neue',cursive; font-size:0.9rem; color:#0F0F0F;">01</div>
+          <p style="font-size:0.92rem; color:rgba(250,246,239,0.7); line-height:1.8; padding-top:6px;">Talk to someone you trust — a friend, family member, teacher, or mentor.</p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:32px; height:32px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Bebas Neue',cursive; font-size:0.9rem; color:#0F0F0F;">02</div>
+          <p style="font-size:0.92rem; color:rgba(250,246,239,0.7); line-height:1.8; padding-top:6px;">Reach out to a mental health professional or a trained first aider for guidance.</p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:32px; height:32px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Bebas Neue',cursive; font-size:0.9rem; color:#0F0F0F;">03</div>
+          <p style="font-size:0.92rem; color:rgba(250,246,239,0.7); line-height:1.8; padding-top:6px;">Contact LEHEMA directly — our team is trained to listen and guide you to the right support.</p>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:32px; height:32px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Bebas Neue',cursive; font-size:0.9rem; color:#0F0F0F;">04</div>
+          <p style="font-size:0.92rem; color:rgba(250,246,239,0.7); line-height:1.8; padding-top:6px;">If you are in immediate danger, please contact emergency services or go to your nearest health facility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- EMERGENCY CONTACTS -->
+  <div class="reveal" style="margin-bottom:56px; transition-delay:0.2s;">
+    <div class="label" style="margin-bottom:20px;">Emergency Contacts</div>
+    <div style="background:#E8940A; padding:36px;">
+      <p style="font-size:0.82rem; color:rgba(15,15,15,0.6); letter-spacing:0.05em; margin-bottom:24px; text-transform:uppercase; font-weight:600;">If you or someone you know is in immediate danger, please reach out now.</p>
+      <div>
+        <div class="contact-row">
+          <div class="dot" style="background:#0F0F0F;"></div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(15,15,15,0.55); font-weight:600;">Malawi Emergency Services</div>
+            <a href="tel:998" style="font-family:'Bebas Neue',cursive; font-size:1.8rem; color:#0F0F0F; letter-spacing:0.05em; text-decoration:none;">998</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="dot" style="background:#0F0F0F;"></div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(15,15,15,0.55); font-weight:600;">Malawi Police Service</div>
+            <a href="tel:997" style="font-family:'Bebas Neue',cursive; font-size:1.8rem; color:#0F0F0F; letter-spacing:0.05em; text-decoration:none;">997</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="dot" style="background:#0F0F0F;"></div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(15,15,15,0.55); font-weight:600;">LEHEMA Direct Line</div>
+            <a href="tel:+265883529443" style="font-family:'Bebas Neue',cursive; font-size:1.8rem; color:#0F0F0F; letter-spacing:0.05em; text-decoration:none;">+265 883 529 443</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- COUNSELLING ENQUIRIES -->
+  <div class="reveal" style="transition-delay:0.3s;">
+    <div class="label" style="margin-bottom:20px;">Counselling Enquiries</div>
+    <div style="background:#fff; border:1px solid rgba(15,15,15,0.08); padding:40px 36px;">
+      <p style="font-size:0.98rem; line-height:1.9; color:#3A3530; margin-bottom:32px;">
+        To enquire about counselling sessions, psychosocial support, or to connect with one of our mental health first aiders, reach out through any of the channels below. We will respond with care.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600; margin-bottom:3px;">Email</div>
+            <a href="mailto:letstalkmentalhealthmw@gmail.com" style="font-size:0.92rem; color:#0F0F0F; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='#0F0F0F'">letstalkmentalhealthmw@gmail.com</a>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600; margin-bottom:3px;">Phone / WhatsApp</div>
+            <a href="tel:+265883529443" style="font-size:0.92rem; color:#0F0F0F; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#E8940A'" onmouseout="this.style.color='#0F0F0F'">+265 883 529 443</a>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; background:#E8940A; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="#0F0F0F" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8940A; font-weight:600; margin-bottom:3px;">Visit Us</div>
+            <span style="font-size:0.92rem; color:#0F0F0F;">Andrew's Building, Malangalanga, Lilongwe, Malawi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CLOSING REASSURANCE -->
+  <div style="text-align:center; margin-top:72px; padding:48px 32px; background:#0F0F0F;" class="reveal" style="transition-delay:0.4s;">
+    <p style="font-family:'Playfair Display',serif; font-size:1.3rem; color:#FAF6EF; line-height:1.7; font-style:italic; max-width:480px; margin:0 auto 28px;">
+      "You deserve support. You deserve to be heard. You deserve to heal."
+    </p>
+    <div style="width:40px; height:2px; background:#E8940A; margin:0 auto 28px;"></div>
+    <a href="contact.html" style="display:inline-block; background:#E8940A; color:#0F0F0F; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:14px 34px; text-decoration:none; clip-path:polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition:all 0.3s;" onmouseover="this.style.background='#F5A623'" onmouseout="this.style.background='#E8940A'">
+      Contact Us
+    </a>
+  </div>
+
+</div>
+
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
