@@ -110,17 +110,33 @@
   <div class="glow-top"></div>
 
   <!-- ── NAV ── -->
-  <nav class="sticky top-0 z-50 border-b border-border" style="background: rgba(11,15,20,0.88); backdrop-filter: blur(16px);">
-    <div class="max-w-content mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-      <a href="https://portfolio.foundlinkdigital.com/contact.html" class="flex items-center gap-3 font-mono text-xs font-bold tracking-widest uppercase text-textprimary no-underline">
-        <span class="brand-dot w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
-        Nephter || Developer
-        <span class="text-muted font-normal mx-0.5">/</span>
-        <span class="text-muted font-normal">Client Portal</span>
-      </a>
-      <span class="hidden sm:block font-mono text-[0.62rem] text-muted tracking-widest uppercase">Edit Session Active</span>
-    </div>
-  </nav>
+<nav class="sticky top-0 z-50 border-b border-border backdrop-blur-xl bg-[rgba(11,15,20,0.88)]">
+  
+  <div class="max-w-content mx-auto px-4 sm:px-6 md:px-10 h-16 flex items-center justify-between">
+    
+    <!-- Brand -->
+    <a href="https://portfolio.foundlinkdigital.com/contact.html"
+       class="flex items-center gap-2 sm:gap-3 font-mono text-[0.65rem] sm:text-xs font-bold tracking-widest uppercase text-textprimary no-underline">
+      
+      <span class="brand-dot w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+      
+      <span class="whitespace-nowrap">
+        Nephter <span class="hidden xs:inline">|| Developer</span>
+      </span>
+
+      <span class="text-muted font-normal hidden sm:inline">/</span>
+      <span class="text-muted font-normal hidden sm:inline">
+        Client Portal
+      </span>
+    </a>
+
+    <!-- Status -->
+    <span class="hidden md:block font-mono text-[0.62rem] text-muted tracking-widest uppercase">
+      Edit Session Active
+    </span>
+
+  </div>
+</nav>
 
   <!-- ── HERO ── -->
   <div class="relative z-10 w-full border-b border-border py-20 md:py-24" style="background: linear-gradient(180deg, rgba(0,229,255,0.03) 0%, transparent 100%);">
@@ -133,9 +149,10 @@
       </div>
 
       <!-- H1 -->
-      <h1 class="fade-2 font-display font-extrabold leading-[1.06] tracking-tight text-textprimary mb-5" style="font-size: clamp(2.4rem, 5vw, 4.2rem);">
-        <em class="not-italic text-accent">WTEC1</em><br/>Technologies
-      </h1>
+     <h1 class="fade-2 font-display font-extrabold leading-tight tracking-tight text-textprimary mb-5 text-[clamp(2.2rem,5vw,4.2rem)]">
+  <span class="text-accent">WTEC1</span>
+  <span class="block">Technologies</span>
+</h1>
 
       <!-- Sub -->
       <p class="fade-3 text-textsec leading-relaxed mb-8 max-w-lg" style="font-size: 1.02rem;">
