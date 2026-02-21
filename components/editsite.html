@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WTEC1 Technologies — Edit Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f14;
+      --surface: #131820;
+      --border: #1e2733;
+      --accent: #00e5ff;
+      --accent2: #ff4d6d;
+      --text: #e8edf3;
+      --muted: #5a6a7e;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 15, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.25rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--muted);
+    }
+
+    nav a.nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.45rem 1rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    nav a.nav-cta:hover {
+      background: #33eaff;
+      transform: translateY(-1px);
+    }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      padding: 3rem 1.25rem 4rem;
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Glow blob */
+    .glow {
+      position: fixed;
+      top: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* Info block */
+    .info-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 1.25rem 1.5rem;
+      border-radius: 4px;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .info-block h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .info-block p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .info-block p strong {
+      color: var(--accent2);
+    }
+
+    /* Phase section */
+    .phase {
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .phase-badge {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(0,229,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0,229,255,0.25);
+      padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+    }
+
+    .phase h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .phase > p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* Link cards */
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.15s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.2s ease;
+    }
+
+    .link-card:hover {
+      border-color: rgba(0,229,255,0.35);
+      background: #161d27;
+      transform: translateX(3px);
+    }
+
+    .link-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .link-card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .link-card-num {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .link-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .link-card-url {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    .link-arrow {
+      font-size: 1rem;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .link-card:hover .link-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.25rem;
+    }
+
+    .footer-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-links a::before {
+      content: '↗';
+      font-size: 0.6rem;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile tweaks already handled — mobile first above */
+    @media (min-width: 600px) {
+      main { padding: 4rem 2rem 5rem; }
+      h1 { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="brand"><span>⬡</span> Nephter Developer</div>
+  <a href="#" class="nav-cta">View Drafted</a>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label">Client Portal</p>
+    <h1>WTEC1 to <em>WTEC1</em><br/>Technologies</h1>
+  </section>
+
+  <!-- Info block -->
+  <div class="info-block">
+    <h2>Welcome to Website Editing</h2>
+    <p>
+      Please follow the links given below.<br/>
+      <strong>Do not edit any page not linked below.</strong>
+    </p>
+  </div>
+
+  <!-- Phase 1 -->
+  <section class="phase">
+    <div class="phase-header">
+      <span class="phase-badge">Phase 01</span>
+      <h2>Edit Phase 1</h2>
+    </div>
+    <p>Let's edit these pages below.</p>
+
+    <div class="link-list">
+
+      <a href="#" class="link-card">
+        <div class="link-card-left">
+          <span class="link-card-num">01 / PAGE</span>
+          <span class="link-card-title">Homepage</span>
+          <span class="link-card-url">wtec1.com/home</span>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="#" class="link-card">
+        <div class="link-card-left">
+          <span class="link-card-num">02 / PAGE</span>
+          <span class="link-card-title">About Us</span>
+          <span class="link-card-url">wtec1.com/about</span>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="#" class="link-card">
+        <div class="link-card-left">
+          <span class="link-card-num">03 / PAGE</span>
+          <span class="link-card-title">Services</span>
+          <span class="link-card-url">wtec1.com/services</span>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">© 2025 Nephter Developer</span>
+    <div class="footer-links">
+      <a href="#">Main Site</a>
+      <a href="#">Pricing</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
